@@ -1,7 +1,11 @@
+import { MdPermMedia } from 'react-icons/md';
+
 export default {
-	title: 'Project',
+		
+	title: 'Projects',
 	name: 'project',
 	type: 'document',
+	icon: MdPermMedia,
 	fields: [
 		{
 			title: 'Title',
@@ -22,17 +26,19 @@ export default {
 			validation: Rule => Rule.required()
 		},
 		{
+			title: 'Project Tags',
+			name: 'projectTags',
+			type: 'array',
+			of: [{
+				type: 'reference',
+				to: [{ type: 'projectTag' }]
+			}]
+		},
+		{
 			title: 'Content',
 			name: 'content',
 			type: 'array',
-			of: [
-				{
-					type: 'block'
-				},
-				{
-					type: 'image'
-				}
-			]
+			of: [{type: 'block'}, {type: 'image'}]
 		}
 	]
 }

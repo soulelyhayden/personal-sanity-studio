@@ -1,9 +1,16 @@
 // First, we must import the schema creator
 import createSchema from 'part:@sanity/base/schema-creator'
-import project from './project'
 
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type'
+
+
+import aboutMe from './documents/aboutMe'
+import siteSettings from './documents/siteSettings'
+import project from './documents/project'
+import projectTag from './documents/projectTag'
+import socialSite from './objects/socialSite.js'
+
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -13,6 +20,12 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     /* Your types here! */
-	project
+	siteSettings,
+	project,
+	projectTag,
+	aboutMe,
+	socialSite
+	
+
   ]),
 })
