@@ -17,7 +17,7 @@ export default {
 		},
 		{
 			title: 'Description',
-			name: 'desc',
+			name: 'content',
 			description: 'Get a little more detailed about yourself and your work.',
 			type: 'array',
 			of: [{ type: 'block' }]

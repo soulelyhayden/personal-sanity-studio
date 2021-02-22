@@ -16,8 +16,7 @@ export default {
 		{
 			title: 'Date',
 			name: 'date',
-			type: 'datetime',
-			validation: Rule => Rule.required()
+			type: 'datetime'
 		},
 		{
 			title: 'Description',
@@ -35,10 +34,16 @@ export default {
 			}]
 		},
 		{
+			title: 'Thumbnail Image',
+			name: 'thumbnail',
+			type: 'image',
+			validation: Rule => Rule.required()
+		},
+		{
 			title: 'Content',
 			name: 'content',
 			type: 'array',
-			of: [{type: 'block'}, {type: 'image'}]
+			of: [{type: 'block'}, {type: 'image'}, {type: 'vimeo'}]
 		}
 	]
 }
