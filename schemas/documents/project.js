@@ -40,7 +40,7 @@ export default {
 		{
 			title: 'Thumbnail Image',
 			name: 'thumbnail',
-			type: 'image',
+			type: 'altImage',
 			description: 'This will appear in project lists, but not in the project itself.',
 			validation: Rule => Rule.required()
 		},
@@ -55,23 +55,11 @@ export default {
 			title: 'Content',
 			name: 'content',
 			type: 'array',
-			description: 'The main content of the project. This can include images, video embeds, and smaller bits of text.',
+			description: 'The main content of the project.',
 			of: [
-				{ type: 'block' },
-				{ type: 'image',
-					fields: [
-						{
-							type: 'text',
-							name: 'alt',
-							title: 'Alternative text',
-							description: 'What text should appear in place of the image.',
-							options: {
-								isHighlighted: true
-							}
-						}
-					]
-				},
-				{ type: 'vimeo' }
+				{ type: 'altImage' },
+				{ type: 'projectText' },
+				{ type: 'embed' }
 			]
 		}
 	]

@@ -11,7 +11,9 @@ import project from './documents/project'
 import projectTag from './documents/projectTag'
 
 import socialSite from './objects/socialSite.js'
-import vimeo from './objects/vimeo.js'
+import embed from './objects/embed.js'
+import projectText from './objects/projectText.js'
+import altImage from './objects/altImage.js'
 
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -24,7 +26,9 @@ export default createSchema({
     /* Your types here! */
 	siteSettings,
 	project,
-	vimeo,
+	projectText,
+	altImage,
+	  embed,
 	projectTag,
 	aboutMe,
 	socialSite
