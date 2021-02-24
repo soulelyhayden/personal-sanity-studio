@@ -11,23 +11,27 @@ export default {
 			title: 'Title',
 			name: 'title',
 			type: 'string',
+			description: 'Title of the project.',
 			validation: Rule => Rule.required()
 		},
 		{
 			title: 'Date',
 			name: 'date',
-			type: 'datetime'
+			type: 'datetime',
+			description: 'When was the project made, or launched.'
 		},
 		{
-			title: 'Description',
-			name:'description',
+			title: 'Blurb',
+			name:'blurb',
 			type: 'string',
+			description: 'A short blurb about the project.',
 			validation: Rule => Rule.required()
 		},
 		{
 			title: 'Project Tags',
 			name: 'projectTags',
 			type: 'array',
+			description: 'Select all applicable tags.',
 			of: [{
 				type: 'reference',
 				to: [{ type: 'projectTag' }]
@@ -37,13 +41,38 @@ export default {
 			title: 'Thumbnail Image',
 			name: 'thumbnail',
 			type: 'image',
+			description: 'This will appear in project lists, but not in the project itself.',
 			validation: Rule => Rule.required()
+		},
+		{
+			title: 'Description',
+			name: 'description',
+			type: 'array',
+			description: 'A more descriptive bit of text about the project that will appear at the top of the project page- above the content, and under the title.',
+			of: [{ type: 'block' }]
 		},
 		{
 			title: 'Content',
 			name: 'content',
 			type: 'array',
-			of: [{type: 'block'}, {type: 'image'}, {type: 'vimeo'}]
+			description: 'The main content of the project. This can include images, video embeds, and smaller bits of text.',
+			of: [
+				{ type: 'block' },
+				{ type: 'image',
+					fields: [
+						{
+							type: 'text',
+							name: 'alt',
+							title: 'Alternative text',
+							description: 'What text should appear in place of the image.',
+							options: {
+								isHighlighted: true
+							}
+						}
+					]
+				},
+				{ type: 'vimeo' }
+			]
 		}
 	]
 }
