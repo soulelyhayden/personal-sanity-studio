@@ -40,7 +40,7 @@ export default {
 		{
 			title: 'Thumbnail Image',
 			name: 'thumbnail',
-			type: 'altImage',
+			type: 'image',
 			description: 'This will appear in project lists, but not in the project itself.',
 			validation: Rule => Rule.required()
 		},
@@ -56,11 +56,14 @@ export default {
 			name: 'content',
 			type: 'array',
 			description: 'The main content of the project.',
-			of: [
-				{ type: 'altImage' },
-				{ type: 'projectText' },
-				{ type: 'embed' }
-			]
+			of: [{ type: 'altImage' }, { type: 'projectText' }, { type: 'embed' }]
+		},
+		{
+			title: 'Links',
+			name: 'links',
+			type: 'array',
+			description: 'A place for any external links related to the project.',
+			of: [{ type: 'url' }]
 		}
 	]
 }

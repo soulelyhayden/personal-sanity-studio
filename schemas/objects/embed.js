@@ -1,7 +1,10 @@
+import { ImEmbed2 } from "react-icons/im";
+
 export default {
 	title: 'Embed',
 	name: 'embed',
 	type: 'object',
+	icon: ImEmbed2,
 	fields: [
 		{
 			name: 'url',

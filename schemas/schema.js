@@ -28,7 +28,7 @@ export default createSchema({
 	project,
 	projectText,
 	altImage,
-	  embed,
+	embed,
 	projectTag,
 	aboutMe,
 	socialSite
