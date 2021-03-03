@@ -11,5 +11,11 @@ export default {
 			type: 'text',
 			title: 'Project Text'
 		}
-	]
+	],
+	preview: {
+		select: {
+			title: 'text'
+			// subtitle: 'releaseDate'
+		}
+	}
 }

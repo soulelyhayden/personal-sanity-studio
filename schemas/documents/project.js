@@ -63,7 +63,7 @@ export default {
 			name: 'links',
 			type: 'array',
 			description: 'A place for any external links related to the project.',
-			of: [{ type: 'url' }]
+			of: [{ type: 'link' }]
 		}
 	]
 }

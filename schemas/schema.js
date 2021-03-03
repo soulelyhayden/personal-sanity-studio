@@ -14,7 +14,7 @@ import socialSite from './objects/socialSite.js'
 import embed from './objects/embed.js'
 import projectText from './objects/projectText.js'
 import altImage from './objects/altImage.js'
-
+import link from './objects/link.js'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -28,6 +28,7 @@ export default createSchema({
 	project,
 	projectText,
 	altImage,
+	link,
 	embed,
 	projectTag,
 	aboutMe,
