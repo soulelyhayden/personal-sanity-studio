@@ -37,5 +37,7 @@ export default () =>
 				),
 
 			S.divider(),
-			...S.documentTypeListItems().filter(listItem => !['siteSettings', 'aboutMe'].includes(listItem.getId()))
+			...S.documentTypeListItems().filter(
+				listItem => !['siteSettings', 'aboutMe'].includes(listItem.getId())
+			)
 		])

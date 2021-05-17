@@ -56,7 +56,7 @@ export default {
 			name: 'content',
 			type: 'array',
 			description: 'The main content of the project.',
-			of: [{ type: 'altImage' }, { type: 'projectText' }, { type: 'embed' }]
+			of: [{ type: 'altImage' }, { type: 'projectText' }]
 		},
 		{
 			title: 'Links',
