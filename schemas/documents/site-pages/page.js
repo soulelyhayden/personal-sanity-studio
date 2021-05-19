@@ -1,11 +1,9 @@
-import { GrDiamond } from 'react-icons/gr';
 import { RiPagesFill } from 'react-icons/ri';
 
 import defaultPage from './templates/default-page';
 import contactPage from './templates/contact-page';
 // collapsible: true
 
-import React from 'react';
 import conditionalFields from "../../objects/conditionalFields";
 
 export default {

@@ -2,6 +2,7 @@ import S from '@sanity/desk-tool/structure-builder'
 import { MdSettings } from 'react-icons/md';
 import { CgWebsite } from 'react-icons/cg';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
+import { GrNavigate } from 'react-icons/gr';
 
 export default () =>
 	S.list()
@@ -18,7 +19,7 @@ export default () =>
 						// Each will pull one of our new singletons
 						.items([
 							S.listItem()
-								.title('About Site')
+								.title('Site Settings')
 								.icon(CgWebsite)
 								.child(
 									S.document()
@@ -26,18 +27,27 @@ export default () =>
 										.documentId('siteSettings')
 								),
 							S.listItem()
-								.title('About Me')
+								.title('Site Navigation')
+								.icon(GrNavigate)
+								.child(
+									S.document()
+										.title('Site Navigation')
+										.schemaType('navigation')
+										.documentId('navigation')
+								),
+							S.listItem()
+								.title('About')
 								.icon(BsFillPersonLinesFill)
 								.child(
 									S.document()
-										.schemaType('aboutMe')
-										.documentId('aboutMe')
-								)
+										.schemaType('about')
+										.documentId('about')
+								),	
 						])
 				),
 
 			S.divider(),
 			...S.documentTypeListItems().filter(
-				listItem => !['siteSettings', 'aboutMe'].includes(listItem.getId())
+				listItem => !['siteSettings', 'about', 'navigation'].includes(listItem.getId())
 			)
 		])

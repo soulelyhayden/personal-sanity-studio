@@ -4,37 +4,27 @@ import createSchema from 'part:@sanity/base/schema-creator'
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // Documents
-import aboutMe from './documents/aboutMe'
-import siteSettings from './documents/siteSettings'
+import about from './documents/settings/about'
+import siteSettings from './documents/settings/siteSettings'
+import navigation from './documents/settings/navigation'
 import page from './documents/site-pages/page'
-import project from './documents/project'
-import projectTag from './documents/projectTag'
-
-
-const documents = [aboutMe, siteSettings, page, project, projectTag]
+import project from './documents/projects/project'
+import projectTag from './documents/projects/projectTag'
 
 // Objects
-import socialSite from './objects/socialSite.js'
+import _blocks from './objects/_blocks'
+import socialSite from './objects/utilities/navigation/socialSite.js'
+
+// Degraded need to be removed
 import projectText from './objects/projectText.js'
 import altImage from './objects/altImage.js'
-import link from './objects/link.js'
 
-// Page Templates
-import defaultPage from './documents/site-pages/templates/default-page'
-import contactPage from './documents/site-pages/templates/contact-page'
-
-// Blocks
-import _blocks from './objects/_blocks'
-import textSection from './objects/blocks/textSection'
-import embed from './objects/blocks/embed.js'
-
-const objects = [socialSite, projectText, altImage, link]
-const pageTemplates = [defaultPage, ]
-const blocks = [_blocks, textSection, embed]
+const documents = [about, siteSettings, navigation, page, project, projectTag]
+const objects = [_blocks, socialSite, projectText, altImage]
 
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   name: 'default',
-	types: schemaTypes.concat([...documents, ...objects, ...pageTemplates, ...blocks]),
+	types: schemaTypes.concat([...documents, ...objects]),
 })

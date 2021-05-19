@@ -1,6 +1,10 @@
+import textSection from './blocks/textSection';
+import embed from './blocks/embed';
+import link from './blocks/link'
+
 export default {
 	title: 'Blocks',
 	name: '_blocks',
 	type: 'array',
-	of: [{ type: 'textSection' }, { type: 'embed' }, { type: 'link' }]
+	of: [textSection, embed, link]
 }
