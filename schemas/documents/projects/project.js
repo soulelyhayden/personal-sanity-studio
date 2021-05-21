@@ -1,3 +1,8 @@
+import client from 'part:@sanity/base/client'
+import SlugInput from 'sanity-plugin-better-slug'
+import { isUniqueAcrossAllDocuments } from '../../lib/isUniqueAcrossAllDocuments'
+import { validateSlug } from '../../lib/validateSlug'
+
 import { MdPermMedia } from 'react-icons/md';
 
 export default {
@@ -15,6 +20,23 @@ export default {
 			validation: Rule => Rule.required()
 		},
 		{
+			title: 'Slug',
+			name: 'slug',
+			type: 'slug',
+			inputComponent: SlugInput,
+			description: 'Set the projects root slug in the Site Navigation settings.',
+			options: {
+				source: 'title',
+				isUnique: isUniqueAcrossAllDocuments,
+				basePath: async (document) => {
+					const projectsRoot = await client.fetch(`*[_id == "navigation"]{"archivePageSlug":archivePage->slug.current}[0].archivePageSlug`)
+
+					return projectsRoot ? `/${projectsRoot}` : ' '
+				}
+			},
+			validation: Rule => Rule.custom((slug) => validateSlug(slug))
+		},
+		{
 			title: 'Date',
 			name: 'date',
 			type: 'datetime',
@@ -24,8 +46,7 @@ export default {
 			title: 'Blurb',
 			name:'blurb',
 			type: 'string',
-			description: 'A short blurb about the project.',
-			validation: Rule => Rule.required()
+			description: 'A short blurb about the project.'
 		},
 		{
 			title: 'Project Tags',

@@ -1,12 +1,15 @@
-import { RiPagesFill } from 'react-icons/ri';
+import conditionalFields from "../../lib/conditionalFields";
+import SlugInput from 'sanity-plugin-better-slug'
+import { isUniqueAcrossAllDocuments } from '../../lib/isUniqueAcrossAllDocuments'
+import { validateSlug } from '../../lib/validateSlug'
+
+import client from 'part:@sanity/base/client'
 
 import defaultPage from './templates/defaultPage';
 import contactPage from './templates/contactPage';
-// collapsible: true
 
-import conditionalFields from "../../lib/conditionalFields";
-import { isUniqueAcrossAllDocuments } from '../../lib/isUniqueAcrossAllDocuments'
-import client from 'part:@sanity/base/client'
+import { RiPagesFill } from 'react-icons/ri';
+
 
 export default {
 	title: "Pages",
@@ -32,10 +35,13 @@ export default {
 			description: 'Title of the page.',
 			validation: Rule => [
 				Rule.required().error("Page needs a title!"),
-				Rule.custom((title) => {
-					return client.fetch(`count(*[_type == "page" && title == "${title}"])`)
+				Rule.custom((title, context) => {
+					const id = context.document._id.replace(/^drafts\./, '')
+					const draftID = `drafts.${id}`
+
+					return client.fetch(`count(*[_type == "page" && title == "${title}" && !(_id == "${id}") && !(_id == "${draftID}")])`)
 						.then(count => {
-							if (count > 1) {
+							if (count > 0) {
 								return 'This might be confusing, page titles should be unique.'
 							} else {
 								return true
@@ -48,20 +54,15 @@ export default {
 			title: 'Slug',
 			name: 'slug',
 			type: 'slug',
+			inputComponent: SlugInput,
 			fieldset: 'pageSettings',
 			description: 'Custom slugs are generally not recommended, use the generate option.',
 			options: {
 				source: 'title',
 				isUnique: isUniqueAcrossAllDocuments,
+				basePath: ' '
 			},
-			validation: Rule => Rule.required().custom((slug) => {
-				let errorMessage;
-
-				if (slug.current.startsWith('/') || slug.current.startsWith('\\')) errorMessage = 'Cannot start with a slash';
-				if (slug.current.endsWith('/') || slug.current.endsWith('\\')) errorMessage = 'Cannot end with a slash';
-				
-				return errorMessage ? errorMessage : true;
-			})
+			validation: Rule => Rule.custom((slug) => validateSlug(slug))
 		},
 		{
 			title: 'Blurb',

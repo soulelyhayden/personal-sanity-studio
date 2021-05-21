@@ -11,6 +11,7 @@ export default {
 			title: 'Primary Navigation',
 			name: 'primaryNavigation',
 			type: 'array',
+			description: 'Site navigation, the Home Page does not need to be added here.',
 			of: [ navPage ]
 		},
 		{

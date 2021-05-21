@@ -4,9 +4,6 @@ import link from './blocks/link'
 import interactiveSection from './blocks/interactiveSection'
 import projectsArchive from './blocks/projectsArchive'
 
-
-
-
 export default {
 	title: 'Blocks',
 	name: '_blocks',

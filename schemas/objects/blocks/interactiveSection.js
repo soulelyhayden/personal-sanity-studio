@@ -8,12 +8,12 @@ export default {
 	icon: HiCursorClick,
 	fields: [
 		{
-			name: 'sectionType',
+			name: 'interactiveScript',
 			title: 'Section Type',
 			type: 'string',
 			options: {
 				list: [
-					{ title: 'Blobs', value: 'blobs' }
+					{ title: 'Blobs', value: 'blobShader' }
 				],
 				// layout: 'radio',
 			}
@@ -21,7 +21,7 @@ export default {
 	],
 	preview: {
 		select: {
-			type: 'sectionType',
+			type: 'interactiveScript',
 		},
 		prepare(value) {
 			return {
