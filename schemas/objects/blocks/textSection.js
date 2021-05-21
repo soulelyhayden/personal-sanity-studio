@@ -14,36 +14,24 @@ export default {
 			description: 'Added formatted text to appear within the block.',
 		},
 		{
-			title: 'Text Align',
-			name: 'textAlign',
-			type: 'string',
-			initialValue: 'left',
-			options: {
-				list: [
-					{ title: 'Left', value: 'left' },
-					{ title: 'Centre', value: 'center' },
-					{ title: 'Right', value: 'right' }
-				],
-				layout: 'radio'
-			},
-			validation: Rule => Rule.required()		
+			title: 'Highlighted Text',
+			name: 'highlighted',
+			type: 'boolean',
+			description: 'Highlighted text is treated differently.',
 		}
 	],
 	preview: {
 		select: {
 			blocks: 'text',
-			align: 'textAlign'
+			highlighted: 'highlighted'
 		},
 		prepare(value) {
 			const block = (value.blocks || []).find(block => block._type === 'block')
 			return {
-				title: block
-					? block.children
-						.filter(child => child._type === 'span')
-						.map(span => span.text)
-						.join('')
-					: 'No title',
-				subtitle: 'Text Align: ' + value.align,
+				title: block ?
+					block.children.filter(child => child._type === 'span').map(span => span.text).join('') :
+					'No title',
+				subtitle: value.highlighted ? "Highlighted text section" : "Normal text section"
 			}
 		}
 	}

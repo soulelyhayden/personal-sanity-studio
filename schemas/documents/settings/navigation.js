@@ -11,7 +11,21 @@ export default {
 			title: 'Primary Navigation',
 			name: 'primaryNavigation',
 			type: 'array',
-			of: [ navPage, socialSite ]
+			of: [ navPage ]
+		},
+		{
+			title: 'Home Page',
+			name: 'homePage',
+			type: 'reference',
+			description: 'Select the page to be used for the root of the site.',
+			to: [{ type: 'page' }],
+		},
+		{
+			title: 'Projects Archive Page',
+			name: 'archivePage',
+			type: 'reference',
+			description: 'Select the page used as the Projects Archive.',
+			to: [{ type: 'page' }],
 		}
 	],
 }
