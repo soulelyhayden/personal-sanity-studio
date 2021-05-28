@@ -24,6 +24,7 @@ export default {
 			name: 'slug',
 			type: 'slug',
 			inputComponent: SlugInput,
+			hidden: true,
 			description: 'Set the projects root slug in the Site Navigation settings.',
 			options: {
 				source: 'title',
@@ -34,7 +35,7 @@ export default {
 					return projectsRoot ? `/${projectsRoot}` : ' '
 				}
 			},
-			validation: Rule => Rule.custom((slug) => validateSlug(slug))
+			// validation: Rule => Rule.custom((slug) => validateSlug(slug))
 		},
 		{
 			title: 'Date',
@@ -46,6 +47,7 @@ export default {
 			title: 'Blurb',
 			name:'blurb',
 			type: 'string',
+			hidden: true,
 			description: 'A short blurb about the project.'
 		},
 		{
@@ -69,15 +71,21 @@ export default {
 			title: 'Description',
 			name: 'description',
 			type: 'array',
-			description: 'A more descriptive bit of text about the project that will appear at the top of the project page- above the content, and under the title.',
+			description: 'A more descriptive bit of text about the project.',
 			of: [{ type: 'block' }]
 		},
 		{
-			title: 'Content',
-			name: 'content',
-			type: 'array',
-			description: 'The main content of the project.',
-			of: [{ type: 'altImage' }, { type: 'projectText' }]
+			title: 'Client',
+			name: 'client',
+			type: 'reference',
+			to: [{ type: 'client' }]
+		},
+		{
+			title: 'Video',
+			name: 'url',
+			type: 'url',
+			description: 'Link to the video to be embedded. Works with YouTube and Vimeo',
+			validation: Rule => Rule.required()
 		}
 	]
 }

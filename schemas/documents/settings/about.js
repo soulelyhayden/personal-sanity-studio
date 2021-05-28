@@ -10,30 +10,22 @@ export default {
 			type: 'string'
 		},
 		{
-			title: 'Bio',
-			name: 'bio',
-			description: 'A little bit about myself. Keep it short.',
-			type: 'string'
-		},
-		{
 			title: 'Description',
-			name: 'content',
-			description: 'Get a little more detailed about yourself and your work.',
+			name: 'description',
+			description: 'A detailed about section.',
 			type: 'array',
 			of: [{ type: 'block' }]
+		},
+		{
+			title: 'Curriculum Vitae',
+			name: 'curriculumVitae',
+			type: 'file'
 		},
 		{
 			title: 'Avatar',
 			name: 'avatar',
 			type: 'image',
-			fields: [
-				{
-					// Editing this field will be hidden behind an "Edit"-button
-					name: 'attribution',
-					type: 'string',
-					title: 'Attribution',
-				}
-			]
+			description: 'Portrait orientation works best.'
 		},
 		{
 			title: 'Email',
@@ -41,9 +33,14 @@ export default {
 			type: 'string'
 		},
 		{
+			title: 'Phone Number',
+			name: 'phoneNumber',
+			type: 'string'
+		},
+		{
 			title: 'Socials',
 			name: 'social',
-			description: 'A list of my socials.',
+			description: 'A list of all related social media accounts. The first social is treated as the primary.',
 			type: 'array',
 			of: [{ type: 'socialSite' }]
 		}

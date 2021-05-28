@@ -1,6 +1,3 @@
-import navPage from "../../objects/utilities/navigation/internalPage";
-import socialSite from "../../objects/utilities/navigation/socialSite";
-
 export default {
 	title: 'Site Navigation',
 	name: 'navigation',
@@ -12,7 +9,7 @@ export default {
 			name: 'primaryNavigation',
 			type: 'array',
 			description: 'Site navigation, the Home Page does not need to be added here.',
-			of: [ navPage ]
+			of: [{ type: 'navPage' }]
 		},
 		{
 			title: 'Home Page',
@@ -26,6 +23,7 @@ export default {
 			name: 'archivePage',
 			type: 'reference',
 			description: 'Select the page used as the Projects Archive.',
+			hidden: true,
 			to: [{ type: 'page' }],
 		}
 	],

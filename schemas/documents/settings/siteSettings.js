@@ -10,14 +10,14 @@ export default {
 			title: 'Title',
 			name: 'title',
 			type: 'string',
-			validation: Rule => Rule.required().warning(`This site needs a fun name!`)
+			validation: Rule => Rule.required().error(`This site needs a fun name!`)
 		},
 		{
 			title: 'Logo',
 			name: 'logo',
 			type: 'image',
 			description: 'Site logo displayed in header. Ideally an SVG',
-			validation: Rule => Rule.required()
+			// validation: Rule => Rule.required()
 		},
 		{
 			title: 'Description',

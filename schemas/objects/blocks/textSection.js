@@ -14,16 +14,26 @@ export default {
 			description: 'Added formatted text to appear within the block.',
 		},
 		{
-			title: 'Highlighted Text',
-			name: 'highlighted',
-			type: 'boolean',
-			description: 'Highlighted text is treated differently.',
+			title: 'Text Type',
+			name: 'textType',
+			type: 'string',
+			description: 'The type of text.',
+			options: {
+				list: [
+					{ title: 'Plain', value: 'plain' },
+					{ title: 'Highlighted', value: 'highlighted' },
+					{ title: 'Block', value: 'block' },
+				],
+				// layout: 'radio',
+			},
+			initialValue: 'plain',
+			validation: Rule => Rule.required()
 		}
 	],
 	preview: {
 		select: {
 			blocks: 'text',
-			highlighted: 'highlighted'
+			textType: 'textType'
 		},
 		prepare(value) {
 			const block = (value.blocks || []).find(block => block._type === 'block')
@@ -31,7 +41,7 @@ export default {
 				title: block ?
 					block.children.filter(child => child._type === 'span').map(span => span.text).join('') :
 					'No title',
-				subtitle: value.highlighted ? "Highlighted text section" : "Normal text section"
+				subtitle: `Text Block Style: ${value.textType}`
 			}
 		}
 	}

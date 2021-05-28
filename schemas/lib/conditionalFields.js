@@ -6,7 +6,9 @@ import { setIfMissing } from 'part:@sanity/form-builder/patch-event'
 import { FormBuilderInput } from 'part:@sanity/form-builder'
 // a Higher Order Component that passes document values as props
 import { withDocument } from 'part:@sanity/form-builder'
+
 class conditionalFields extends React.PureComponent {
+			
 	static propTypes = {
 		type: PropTypes.shape({
 			title: PropTypes.string,
@@ -19,7 +21,10 @@ class conditionalFields extends React.PureComponent {
 		focusPath: PropTypes.array.isRequired,
 		onFocus: PropTypes.func.isRequired,
 		onChange: PropTypes.func.isRequired,
-		onBlur: PropTypes.func.isRequired
+		onBlur: PropTypes.func.isRequired,
+		compareValue: PropTypes.func.isRequired,
+		markers: PropTypes.array.isRequired,
+		presence: PropTypes.array.isRequired,
 	}
 	firstFieldInput = React.createRef()
 	handleFieldChange = (field, fieldPatchEvent) => {
@@ -34,10 +39,12 @@ class conditionalFields extends React.PureComponent {
 		this.firstFieldInput.current.focus()
 	}
 	render() {
-		console.log(this.props)
-		const { document, type, value, level, focusPath, onFocus, onBlur } = this.props
+		// console.log(this.props)
+		const { document, type, value, level, focusPath, onFocus, onBlur, compareValue, markers, presence } = this.props
 		let condition = this.props && this.props.value && this.props.value.condition;
+
 		return (
+
 			<Fieldset level={level} legend={type.title} description={type.description}>
 				<div>
 					{type.fields[0].type.fields

@@ -6,7 +6,7 @@ import { validateSlug } from '../../lib/validateSlug'
 import client from 'part:@sanity/base/client'
 
 import defaultPage from './templates/defaultPage';
-import contactPage from './templates/contactPage';
+import homePage from './templates/homePage';
 
 import { RiPagesFill } from 'react-icons/ri';
 
@@ -89,7 +89,7 @@ export default {
 							options: {
 								list: [
 									{ title: 'Blocks', value: 'defaultPage' },
-									{ title: 'Contact', value: 'contactPage' }
+									{ title: 'Home', value: 'homePage' }
 								],
 								// layout: 'radio',
 							}
@@ -99,7 +99,7 @@ export default {
 				{
 					type: 'object',
 					name: 'options',
-					fields: [defaultPage, contactPage ]
+					fields: [defaultPage, homePage ]
 				}
 			]
 		},
