@@ -24,7 +24,6 @@ export default {
 			name: 'slug',
 			type: 'slug',
 			inputComponent: SlugInput,
-			hidden: true,
 			description: 'Set the projects root slug in the Site Navigation settings.',
 			options: {
 				source: 'title',
@@ -35,7 +34,7 @@ export default {
 					return projectsRoot ? `/${projectsRoot}` : ' '
 				}
 			},
-			// validation: Rule => Rule.custom((slug) => validateSlug(slug))
+			validation: Rule => Rule.custom((slug) => validateSlug(slug))
 		},
 		{
 			title: 'Date',
@@ -75,17 +74,30 @@ export default {
 			of: [{ type: 'block' }]
 		},
 		{
-			title: 'Client',
-			name: 'client',
-			type: 'reference',
-			to: [{ type: 'client' }]
-		},
-		{
-			title: 'Video',
-			name: 'url',
-			type: 'url',
-			description: 'Link to the video to be embedded. Works with YouTube and Vimeo',
-			validation: Rule => Rule.required()
+			title: 'Blocks',
+			name: 'blocks',
+			type: '_projectBlocks',
+			description: 'The project content.',
 		}
-	]
+	],
+	preview: {
+		select: {
+			title: 'title',
+			thumbnail: 'thumbnail',
+			tag0: 'projectTags.0.title',
+			tag1: 'projectTags.1.title',
+			tag2: 'projectTags.2.title',
+		},
+		prepare(value) {
+			const tags = [value.tag0, value.tag1].filter(Boolean)
+			const joinedTags = tags.length > 0 ? tags.join(', ') : 'no tags'
+			const moreTags = Boolean(value.tag2) ? ', and more...' : ''
+
+			return {
+				title: value.title,
+				media: value.thumbnail,
+				subtitle: `Project Tags: ${joinedTags}${moreTags}`
+			}
+		}
+	}
 }

@@ -13,5 +13,5 @@ export default {
 	title: 'Blocks',
 	name: '_blocks',
 	type: 'array',
-	of: [simpleHero, textSection, video, itemCard, projectsArchive, aboutSection, contactForm],
+	of: [simpleHero, textSection, video, interactiveSection, itemCard, projectsArchive, aboutSection, contactForm],
 }

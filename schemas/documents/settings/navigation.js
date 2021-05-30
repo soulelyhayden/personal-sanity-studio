@@ -23,7 +23,6 @@ export default {
 			name: 'archivePage',
 			type: 'reference',
 			description: 'Select the page used as the Projects Archive.',
-			hidden: true,
 			to: [{ type: 'page' }],
 		}
 	],
