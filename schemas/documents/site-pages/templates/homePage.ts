@@ -1,6 +1,6 @@
 import { defineType, defineField } from "sanity";
 
-export const homePage = defineType({
+export const homePage = defineField({
 
 	title: 'Home Page Template',
 	name: 'homePage',
@@ -13,6 +13,7 @@ export const homePage = defineType({
 			description: 'Blocks that will appear before the contact forum.',
 		})
 	],
+	hidden: ({ parent, value }) => !value && parent?.pageType != 'homePage',
 	preview: {
 		select: {
 			title: 'title'

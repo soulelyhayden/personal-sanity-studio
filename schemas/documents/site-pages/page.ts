@@ -4,7 +4,13 @@ import { defaultPage } from './templates/defaultPage';
 import { homePage } from './templates/homePage';
 
 import { RiPagesFill } from 'react-icons/ri';
-import { AiOutlineFileSearch } from 'react-icons/ai'
+import { template } from "lodash";
+
+const pageTamples = [homePage, defaultPage]
+for (const template of pageTamples) {
+	template.hidden = ({ parent, value }) => !value && parent?.pageType != template.name;
+	template.group = 'pageContent';
+}
 
 
 export const page = defineType({
@@ -12,36 +18,39 @@ export const page = defineType({
 	name: "page",
 	type: 'document',
 	icon: RiPagesFill,
-	fieldsets: [
+	groups: [
 		{
 			name: 'pageSettings',
 			title: 'Page Settings',
-			options: {
-				collapsible: true,
-				collapsed: false
-			}
-		}
+		},
+		{
+			name: 'pageContent',
+			title: 'Page Content',
+		},
 	],
 	fields: [
 		defineField({
 			title: 'Title',
 			name: 'title',
 			type: 'string',
-			fieldset: 'pageSettings',
+			group: 'pageSettings',
 			description: 'Title of the page for internal use.',
+			validation: Rule => [
+				Rule.required().error("Page needs a title!"),
+			]
 		}),
 		defineField({
 			title: 'Slug',
 			name: 'slug',
 			type: 'slug',
-			fieldset: 'pageSettings',
+			group: 'pageSettings',
 			description: 'Custom slugs are generally not recommended, use the generate option.',
 		}),
 		defineField({
 			title: 'Descriptive Title',
 			name: 'descriptiveTitle',
 			type: 'string',
-			fieldset: 'pageSettings',
+			group: 'pageSettings',
 			description: 'A more descriptive title, that will appear in browsers and search engines.',
 			validation: Rule => [
 				Rule.required(),
@@ -53,7 +62,7 @@ export const page = defineType({
 			title: 'Page Description',
 			name: 'description',
 			type: 'text',
-			fieldset: 'pageSettings',
+			group: 'pageSettings',
 			description: 'A concise description of the page, if none is provided this page will use the site wide descriptor.',
 			validation: Rule => [
 				Rule.min(45).warning("Try to be more descriptive."),
@@ -61,62 +70,19 @@ export const page = defineType({
 			]
 		}),
 		defineField({
-			title: "Page Content",
-			name: 'pageContent',
-			type: 'object',
-			fields: [
-				defineType({
-					title: 'Page Type',
-					name: 'pageType',
-					type: 'array',
-					of: [{ type: 'string' }],
-					options: {
-						list: [
-							{ title: 'Home', value: 'homePage' },
-							{ title: 'Blocks', value: 'defaultPage' },
-						]
-					}
-				}),
-				defineType({
-					title: 'Default Page Template',
-					name: 'defaultPage',
-					type: 'object',
-					fields: [
-						defineField({
-							title: 'Blocks',
-							name: 'blocks',
-							type: '_blocks',
-							description: 'The main content of the page.',
-						})
-					],
-					hidden: ({ parent, value }) => !value && parent?.pageType != 'defaultPage',
-					preview: {
-						select: {
-							title: 'title'
-						}
-					}
-				}),
-				defineType({
-
-					title: 'Home Page Template',
-					name: 'homePage',
-					type: 'object',
-					fields: [
-						defineField({
-							title: 'Blocks',
-							name: 'blocks',
-							type: '_blocks',
-							description: 'Blocks that will appear before the contact forum.',
-						})
-					],
-					hidden: ({ parent, value }) => !value && parent?.pageType != 'homePage',
-					preview: {
-						select: {
-							title: 'title'
-						}
-					}
-				})
-			],
+			title: 'Page Type',
+			name: 'pageType',
+			type: 'string',
+			group: 'pageContent',
+			options: {
+				layout: 'radio',
+				list: [
+					{ title: 'Home', value: 'homePage' },
+					{ title: 'Blocks', value: 'defaultPage' },
+				]
+			}
 		}),
+		defaultPage,
+		homePage
 	]
 });

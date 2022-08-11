@@ -14,7 +14,7 @@ export default createConfig([
 		projectId: 'hautfgiz',
 		dataset: 'production',
 		// the base path is required whenever more than one workspace is defined and is used for route matching
-		basePath: '/prod',
+		basePath: '/production',
 		plugins: [defaultDesk],
 		schema: {
 			types: schemaTypes
@@ -24,8 +24,8 @@ export default createConfig([
 		name: 'staging',
 		title: 'Staging',
 		projectId: 'hautfgiz',
-		dataset: 'staging',
-		basePath: '/staging',
+		dataset: 'development',
+		basePath: '/development',
 		plugins: [defaultDesk],
 		schema: {
 			types: schemaTypes

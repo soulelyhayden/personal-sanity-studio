@@ -1,6 +1,6 @@
 import { defineType, defineField } from "sanity";
 
-export const defaultPage = defineType({
+export const defaultPage = defineField({
 
 	title: 'Default Page Template',
 	name: 'defaultPage',
@@ -13,6 +13,7 @@ export const defaultPage = defineType({
 			description: 'The main content of the page.',
 		})
 	],
+	hidden: ({ parent, value }) => !value && parent?.pageType != 'defaultPage',
 	preview: {
 		select: {
 			title: 'title'
