@@ -1,17 +1,34 @@
-import {createConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
-import {schemaTypes} from './schemas'
+import { deskTool } from 'sanity/desk'
+import { createConfig, createPlugin } from 'sanity'
+import { schemaTypes } from './schemas'
+import { structure, defaultDocumentNode } from './structure'
 
-export default createConfig({
-  name: 'default',
-  title: 'personal-portfolio-site',
-
-  projectId: 'hautfgiz',
-  dataset: 'production',
-
-  plugins: [deskTool()],
-
-  schema: {
-    types: schemaTypes,
-  },
+const defaultDesk = deskTool({
+	structure, defaultDocumentNode
 })
+
+export default createConfig([
+	{
+		name: 'default',
+		title: 'Prod',
+		projectId: 'hautfgiz',
+		dataset: 'production',
+		// the base path is required whenever more than one workspace is defined and is used for route matching
+		basePath: '/prod',
+		plugins: [defaultDesk],
+		schema: {
+			types: schemaTypes
+		}
+	},
+	{
+		name: 'staging',
+		title: 'Staging',
+		projectId: 'hautfgiz',
+		dataset: 'staging',
+		basePath: '/staging',
+		plugins: [defaultDesk],
+		schema: {
+			types: schemaTypes
+		}
+	},
+])
