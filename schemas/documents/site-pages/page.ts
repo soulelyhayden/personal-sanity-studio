@@ -6,6 +6,7 @@ import { homePage } from './templates/homePage';
 import { RiPagesFill } from 'react-icons/ri';
 
 
+
 import sanityClient from '@sanity/client';
 const client = sanityClient({
 	projectId: 'hautfgiz',
@@ -16,7 +17,7 @@ const client = sanityClient({
 
 const pageTamples = [homePage, defaultPage]
 for (const template of pageTamples) {
-	template.hidden = ({ parent, value }) => !value && parent?.pageType != template.name;
+	template.hidden = ({ parent, value }) => parent?.pageType != template.name;
 	template.group = 'pageContent';
 }
 
@@ -90,7 +91,7 @@ export const page = defineType({
 			type: 'string',
 			group: 'pageContent',
 			options: {
-				layout: 'radio',
+				// layout: 'radio',
 				list: [
 					{ title: 'Home', value: 'homePage' },
 					{ title: 'Blocks', value: 'defaultPage' },
