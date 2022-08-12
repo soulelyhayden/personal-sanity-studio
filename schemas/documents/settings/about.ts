@@ -1,4 +1,5 @@
 import { defineType, defineField } from "sanity";
+import { emailValidation } from "../../components/validation/emailValidation";
 
 export const about = defineType({
 	title: 'About',
@@ -31,7 +32,8 @@ export const about = defineType({
 		defineField({
 			title: 'Email',
 			name: 'email',
-			type: 'string'
+			type: 'string',
+			validation: Rule => Rule.custom((formContact: string) => emailValidation(formContact))
 		}),
 		defineField({
 			title: 'Phone Number',

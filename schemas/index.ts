@@ -8,11 +8,17 @@ import { navigation } from "./documents/settings/navigation"
 import { navPage } from "./objects/utilities/navigation/navPage"
 import { page } from "./documents/site-pages/page"
 
+/**
+ * Blocks import
+ */
+import { aboutSection } from "./objects/blocks/aboutSection";
+import { contactForm } from "./objects/blocks/contactForm";
+
 const _blocks = defineType({
 	title: 'Blocks',
 	name: '_blocks',
 	type: 'array',
-	of:[]
+	of: [aboutSection, contactForm]
 })
 const settings = [about, siteSettings, navigation]
 

@@ -1,5 +1,6 @@
 import { defineType, defineField } from "sanity";
 import { MdContactMail } from "react-icons/md";
+import { emailValidation } from "../../components/validation/emailValidation";
 
 export const contactForm = defineType({
 	title: 'Contact Form',
@@ -19,6 +20,7 @@ export const contactForm = defineType({
 			name: 'formContact',
 			type: 'string',
 			description: "Enter the email address you would like to receive form submissions to. If left blank it will default to the email provided in under Site Settings / About",
+			validation: Rule => Rule.required().custom((formContact:string) => emailValidation(formContact))
 		}),
 		defineField({
 			title: 'Success Message',
