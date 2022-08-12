@@ -28,7 +28,8 @@ const _blocks = defineType({
 	title: 'Blocks',
 	name: '_blocks',
 	type: 'array',
-	of: [aboutSection, contactForm]
+	of: [aboutSection, contactForm],
+
 })
 
 export const schemaTypes = [..._documents, ..._utilities, _blocks]

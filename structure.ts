@@ -17,8 +17,6 @@ export const structure = (S:any, context:any) =>
 					S.list()
 						// Sets a title for our new list
 						.title('Settings Documents')
-						// Add items to the array
-						// Each will pull one of our new singletons
 						.items([
 							S.listItem()
 								.title('Site Settings')
@@ -60,12 +58,12 @@ interface docSchemaOptions {
 
 export const defaultDocumentNode = (S: any, { schemaType }: docSchemaOptions) => {
 	// Conditionally return a different configuration based on the schema type
-	if (schemaType === "post") {
-		return S.document().views([
-			S.view.form(),
-			// S.view.component(WebPreview).title('Web')
-		])
-	}
+	// if (schemaType === "post") {
+	// 	return S.document().views([
+	// 		S.view.form(),
+	// 		// S.view.component(WebPreview).title('Web')
+	// 	])
+	// }
 
 	return S.document().views([
 		S.view.form(),

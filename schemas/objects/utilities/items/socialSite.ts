@@ -36,7 +36,8 @@ export const socialSite = defineType({
 			name: 'url',
 			type: 'url',
 			validation: Rule => Rule.required()
-		})
+		}),
+		
 	],
 	preview: {
 		select: {
@@ -46,7 +47,7 @@ export const socialSite = defineType({
 		prepare(value:any) {
 			return {
 				title: `Social type: ${value.type}`,
-				subtitle: value.title
+				subtitle: value.title,
 			}
 		}
 	}
