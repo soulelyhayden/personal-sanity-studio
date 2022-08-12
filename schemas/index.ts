@@ -1,12 +1,22 @@
 import { defineType, defineField } from "sanity";
 
-
+/**
+ * Documents import
+ */
 import { about } from "./documents/settings/about"
 import { siteSettings } from "./documents/settings/siteSettings"
 import { navigation } from "./documents/settings/navigation"
 
+const _documents = [about, siteSettings, navigation ]
+
+/**
+ * Utilities import
+ */
 import { navPage } from "./objects/utilities/navigation/navPage"
 import { page } from "./documents/site-pages/page"
+import { socialSite } from "./objects/utilities/items/socialSite";
+
+const _utilities = [ navPage, page, socialSite ]
 
 /**
  * Blocks import
@@ -20,6 +30,5 @@ const _blocks = defineType({
 	type: 'array',
 	of: [aboutSection, contactForm]
 })
-const settings = [about, siteSettings, navigation]
 
-export const schemaTypes = [...settings, _blocks, navPage, page]
+export const schemaTypes = [..._documents, ..._utilities, _blocks]

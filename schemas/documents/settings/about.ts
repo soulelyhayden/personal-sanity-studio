@@ -45,7 +45,7 @@ export const about = defineType({
 			name: 'social',
 			description: 'A list of all related social media accounts. The first social is treated as the primary.',
 			type: 'array',
-			of: [{ type: 'string' }]
+			of: [{ type: 'socialSite' }]
 		})
 	]
 })
