@@ -1,7 +1,8 @@
 // import { WebPreview, JsonView } from './previews'
 import { MdSettings } from "react-icons/md";
 import { CgWebsite } from "react-icons/cg";
-import { GrNavigate } from "react-icons/gr";
+// import { GrNavigate } from "react-icons/gr";
+import { IoNavigateCircle } from "react-icons/io5";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 
 
@@ -29,7 +30,7 @@ export const structure = (S:any, context:any) =>
 								),
 							S.listItem()
 								.title('Site Navigation')
-								.icon(GrNavigate)
+								.icon(IoNavigateCircle)
 								.child(
 									S.document()
 										.title('Site Navigation')

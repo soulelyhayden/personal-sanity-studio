@@ -1,10 +1,18 @@
-import { defineType, defineField } from "sanity";
+import { defineType, defineField, useCurrentUser } from "sanity";
 
 import { defaultPage } from './templates/defaultPage';
 import { homePage } from './templates/homePage';
 
 import { RiPagesFill } from 'react-icons/ri';
-import { template } from "lodash";
+
+
+import sanityClient from '@sanity/client';
+const client = sanityClient({
+	projectId: 'hautfgiz',
+	dataset: 'development',
+	apiVersion: '2022-08-11', // use current UTC date - see "specifying API version"!
+	useCdn: false, // `false` if you want to ensure fresh data
+})
 
 const pageTamples = [homePage, defaultPage]
 for (const template of pageTamples) {
@@ -45,6 +53,13 @@ export const page = defineType({
 			type: 'slug',
 			group: 'pageSettings',
 			description: 'Custom slugs are generally not recommended, use the generate option.',
+			options: {
+				source: 'title',
+				slugify: input => input
+					.toLowerCase()
+					.replace(/\s+/g, '-')
+					.slice(0, 200)
+			}
 		}),
 		defineField({
 			title: 'Descriptive Title',

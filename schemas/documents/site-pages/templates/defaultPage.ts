@@ -13,7 +13,6 @@ export const defaultPage = defineField({
 			description: 'The main content of the page.',
 		})
 	],
-	hidden: ({ parent, value }) => !value && parent?.pageType != 'defaultPage',
 	preview: {
 		select: {
 			title: 'title'

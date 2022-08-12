@@ -13,7 +13,6 @@ export const homePage = defineField({
 			description: 'Blocks that will appear before the contact forum.',
 		})
 	],
-	hidden: ({ parent, value }) => !value && parent?.pageType != 'homePage',
 	preview: {
 		select: {
 			title: 'title'

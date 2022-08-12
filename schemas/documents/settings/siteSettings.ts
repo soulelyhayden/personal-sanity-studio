@@ -1,6 +1,5 @@
 import { defineType, defineField } from "sanity";
 
-
 export const siteSettings = defineType({
 	title: 'Site Settings',
 	name: 'siteSettings',
