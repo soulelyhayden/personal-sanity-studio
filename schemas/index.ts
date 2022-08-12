@@ -24,12 +24,13 @@ const _utilities = [ navPage, page, socialSite ]
 import { aboutSection } from "./objects/blocks/aboutSection";
 import { contactForm } from "./objects/blocks/contactForm";
 import { interactiveSection } from "./objects/blocks/interactiveSection";
+import { textSection } from "./objects/blocks/textSection";
 
 const _blocks = defineType({
 	title: 'Blocks',
 	name: '_blocks',
 	type: 'array',
-	of: [aboutSection, contactForm, interactiveSection],
+	of: [aboutSection, contactForm, interactiveSection, textSection],
 
 })
 

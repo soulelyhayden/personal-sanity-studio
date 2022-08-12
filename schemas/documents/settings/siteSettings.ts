@@ -19,6 +19,13 @@ export const siteSettings = defineType({
 			// validation: Rule => Rule.required()
 		}),
 		defineField({
+			title: 'Signature',
+			name: 'signature',
+			type: 'image',
+			description: 'Signature used across the site.',
+			// validation: Rule => Rule.required()
+		}),
+		defineField({
 			title: 'Description',
 			name: 'description',
 			type: 'text',

@@ -63,18 +63,6 @@ export const page = defineType({
 			}
 		}),
 		defineField({
-			title: 'Descriptive Title',
-			name: 'descriptiveTitle',
-			type: 'string',
-			group: 'pageSettings',
-			description: 'A more descriptive title, that will appear in browsers and search engines.',
-			validation: Rule => [
-				Rule.required(),
-				Rule.min(15).warning("Try to make the title as accurate and meaningful as possible!"),
-				Rule.max(55).warning("This may be too descriptive, and won't all appear in search engines!")
-			]
-		}),
-		defineField({
 			title: 'Page Description',
 			name: 'description',
 			type: 'text',

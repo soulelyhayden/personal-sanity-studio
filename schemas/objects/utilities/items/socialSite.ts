@@ -1,6 +1,15 @@
 import { defineType, defineField } from "sanity";
 import { HiAtSymbol } from 'react-icons/hi';
 
+const socialSiteTypes = [
+	{ title: 'Twitter', value: 'twitter' },
+	{ title: 'Instagram', value: 'instagram' },
+	{ title: 'Facebook', value: 'facebook' },
+	{ title: 'Vimeo', value: 'vimeo' },
+	{ title: 'LinkedIn', value: 'linkedin' },
+	{ title: 'GitHub', value: 'github' },
+]
+
 export const socialSite = defineType({
 	title: 'Social',
 	name: 'socialSite',
@@ -20,14 +29,7 @@ export const socialSite = defineType({
 			name: 'socialType',
 			type: 'string',
 			options: {
-				list: [
-					{ title: 'Twitter', value: 'twitter' },
-					{ title: 'Instagram', value: 'instagram' },
-					{ title: 'Facebook', value: 'facebook' },
-					{ title: 'Vimeo', value: 'vimeo' },
-					{ title: 'LinkedIn', value: 'linkedin' },
-					{ title: 'GitHub', value: 'github' },
-				]
+				list: socialSiteTypes
 			},
 			validation: Rule => Rule.required()
 		}),
@@ -45,8 +47,10 @@ export const socialSite = defineType({
 			type: 'socialType'
 		},
 		prepare(value:any) {
+			const socialSiteTypeTitle = value.type && socialSiteTypes.flatMap(option => option.value === value.type ? [option.title] : [])
+
 			return {
-				title: `Social type: ${value.type}`,
+				title: `Social type: ${socialSiteTypeTitle}`,
 				subtitle: value.title,
 			}
 		}
