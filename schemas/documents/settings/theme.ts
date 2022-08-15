@@ -1,9 +1,10 @@
 import { defineType, defineField } from "sanity";
 
 const themeColours = [
-	defineField({ name: 'primaryBackground', type: 'color' }),
-	defineField({ name: 'primaryText', type: 'color' }),
+	defineField({ name: 'primaryBackground', type: 'color', validation: Rule => Rule.required() }),
+	defineField({ name: 'primaryText', type: 'color', validation: Rule => Rule.required() }),
 ]
+for (const field of themeColours) { field.fieldset = "themeColours" }
 
 const accentColours = [
 	defineField({ name: 'primaryAccent', type: 'color' }),
@@ -12,6 +13,17 @@ const accentColours = [
 	defineField({ name: 'successAccent', type: 'color' }),
 	defineField({ name: 'failureAccent', type: 'color' }),
 ]
+for (const field of accentColours) {
+	field.fieldset = "accentColours"
+	field.validation = Rule => Rule.custom((value, context) => {
+		const path: any = context.path;
+		if (path[0] == 'defaultTheme' && !value) {
+			return 'Accent colours are required!';
+		}
+
+		return true
+	})
+}
 
 const calculatedColourOverrides = [
 	defineField({ name: 'secondaryBackground', type: 'color' }),
@@ -19,15 +31,9 @@ const calculatedColourOverrides = [
 	defineField({ name: 'oppositeBackground', type: 'color' }),
 	defineField({ name: 'primaryBorder', type: 'color' }),
 ]
+for (const field of calculatedColourOverrides) { field.fieldset = 'calculatedColourOverrides' }
 
-const colourFields = [...themeColours, ...accentColours, ...calculatedColourOverrides]
-
-const calculatedOverrideField = defineField({
-	title: 'Override Calculated Colours',
-	name: 'calculatedColourOverride',
-	type: 'boolean',
-	fieldset: 'options'
-})
+const colourFields:any = [...themeColours, ...accentColours, ...calculatedColourOverrides]
 
 /**
 *	Add readable titles to all fields without titles
@@ -37,21 +43,19 @@ for (const field of colourFields) {
 	const nameParts = field.name.split(/(?=[A-Z])/);
 	nameParts[0] = nameParts[0].charAt(0).toUpperCase() + nameParts[0].slice(1)
 	field.title = field.title ? field.title : nameParts.join(" ")
-}
-
-for (const field of themeColours) { 
-	field.fieldset = "themeColours"
-}
-for (const field of accentColours) { 
-	field.fieldset = "accentColours"
-	
-}
-for (const field of calculatedColourOverrides) {
-	field.fieldset = 'calculatedColourOverrides'
-	field.hidden = ({ parent, value }) => {
-		return parent?.calculatedColourOverride == false;
+	field.options = {
+		disableAlpha: true
 	}
 }
+
+const calculatedOverrideField = defineField({
+	title: 'Override Calculated Colours',
+	name: 'calculatedColourOverride',
+	type: 'boolean',
+	description: "Only use this field if you're certain you know what you're doing. The calculated values will work in most circumstances.",
+	initialValue: false,
+	fieldset: 'options'
+})
 
 const fieldSets = [
 	{
@@ -78,7 +82,9 @@ const fieldSets = [
 		name: 'accentColours',
 		title: 'Accent Colours',
 		readOnly: true,
-		// hidden: true,
+		hidden: ({ currentUser, value, parent }: any) => {
+			return parent?.accentOverride == false;
+		},
 		options: {
 			collapsible: true, // Makes the whole fieldset collapsible
 			collapsed: false, // Defines if the fieldset should be collapsed by default or not
@@ -90,6 +96,9 @@ const fieldSets = [
 		name: 'calculatedColourOverrides',
 		title: 'Calculated Colour Overrides',
 		readOnly: true,
+		hidden: ({ currentUser, value, parent }: any) => {
+			return parent?.calculatedColourOverride == false;
+		},
 		options: {
 			collapsible: true, // Makes the whole fieldset collapsible
 			collapsed: false, // Defines if the fieldset should be collapsed by default or not
@@ -104,11 +113,11 @@ export const theme = defineType({
 	type: 'document',
 	groups: [
 		{
-			name: 'defaultTheme',
+			name: 'defaultThemeGroup',
 			title: 'Default Theme',
 		},
 		{
-			name: 'darkTheme',
+			name: 'darkThemeGroup',
 			title: 'Dark Theme',
 		},
 	],
@@ -129,9 +138,9 @@ export const theme = defineType({
 		}),
 		defineField({
 			title: 'Default Theme',
-			name: 'default',
+			name: 'defaultTheme',
 			type: 'object',
-			group: 'defaultTheme',
+			group: 'defaultThemeGroup',
 			fieldsets: fieldSets,
 			fields: [
 				calculatedOverrideField,
@@ -142,18 +151,19 @@ export const theme = defineType({
 		}),
 		defineField({
 			title: 'Dark Theme',
-			name: 'dark',
+			name: 'darkTheme',
 			type: 'object',
-			group: 'darkTheme',
+			group: 'darkThemeGroup',
 			fieldsets: fieldSets,
 			fields: [
+				calculatedOverrideField,
 				defineField({
 					title: 'Override Default Accents',
 					name: 'accentOverride',
 					type: 'boolean',
+					initialValue: false,
 					fieldset: 'options'
 				}),
-				calculatedOverrideField,
 				...themeColours,
 				...accentColours,
 				...calculatedColourOverrides

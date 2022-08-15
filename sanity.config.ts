@@ -3,11 +3,12 @@ import { createConfig, createPlugin } from 'sanity'
 import { schemaTypes } from './schemas'
 import { structure, defaultDocumentNode } from './structure'
 import { colorInput } from "@sanity/color-input";
+import { visionTool } from '@sanity/vision'
 
 const defaultDesk = deskTool({
 	structure, defaultDocumentNode
 })
-const deskPlugins = [defaultDesk, colorInput()]
+const deskPlugins = [defaultDesk, colorInput(), visionTool()]
 
 export default createConfig([
 	{
