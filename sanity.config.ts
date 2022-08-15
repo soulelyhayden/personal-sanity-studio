@@ -2,10 +2,12 @@ import { deskTool } from 'sanity/desk'
 import { createConfig, createPlugin } from 'sanity'
 import { schemaTypes } from './schemas'
 import { structure, defaultDocumentNode } from './structure'
+import { colorInput } from "@sanity/color-input";
 
 const defaultDesk = deskTool({
 	structure, defaultDocumentNode
 })
+const deskPlugins = [defaultDesk, colorInput()]
 
 export default createConfig([
 	{
@@ -15,7 +17,7 @@ export default createConfig([
 		dataset: 'production',
 		// the base path is required whenever more than one workspace is defined and is used for route matching
 		basePath: '/production',
-		plugins: [defaultDesk],
+		plugins: deskPlugins,
 		schema: {
 			types: schemaTypes
 		}
@@ -26,7 +28,7 @@ export default createConfig([
 		projectId: 'hautfgiz',
 		dataset: 'development',
 		basePath: '/development',
-		plugins: [defaultDesk],
+		plugins: deskPlugins,
 		schema: {
 			types: schemaTypes
 		}

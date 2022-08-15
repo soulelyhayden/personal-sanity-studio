@@ -4,6 +4,8 @@ import { CgWebsite } from "react-icons/cg";
 // import { GrNavigate } from "react-icons/gr";
 import { IoNavigateCircle } from "react-icons/io5";
 import { BsFillPersonLinesFill } from "react-icons/bs";
+import { RiPaintBrushFill } from "react-icons/ri";
+
 
 
 export const structure = (S:any, context:any) => 
@@ -36,6 +38,15 @@ export const structure = (S:any, context:any) =>
 										.documentId('navigation')
 								),
 							S.listItem()
+								.title('Site Theme')
+								.icon(RiPaintBrushFill)
+								.child(
+									S.document()
+										.title('Site Theme')
+										.schemaType('theme')
+										.documentId('theme')
+								),
+							S.listItem()
 								.title('About')
 								.icon(BsFillPersonLinesFill)
 								.child(
@@ -48,7 +59,7 @@ export const structure = (S:any, context:any) =>
 
 			S.divider(),
 			...S.documentTypeListItems().filter(
-				(listItem:any) => !['siteSettings', 'about', 'navigation', 'media.tag'].includes(listItem.getId())
+				(listItem:any) => !['siteSettings', 'about', 'navigation', 'theme', 'media.tag'].includes(listItem.getId())
 			)
 		])
 
