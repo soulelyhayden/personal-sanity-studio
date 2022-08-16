@@ -1,15 +1,17 @@
 import { defineType, defineField } from "sanity";
 
 const themeColours = [
-	defineField({ name: 'primaryBackground', type: 'color', validation: Rule => Rule.required() }),
-	defineField({ name: 'primaryText', type: 'color', validation: Rule => Rule.required() }),
+	defineField({ name: 'primaryBackground', type: 'color' }),
+	defineField({ name: 'primaryText', type: 'color' }),
 ]
-for (const field of themeColours) { field.fieldset = "themeColours" }
+for (const field of themeColours) {
+	field.fieldset = "themeColours";
+	field.validation = Rule => Rule.required();
+}
 
 const accentColours = [
 	defineField({ name: 'primaryAccent', type: 'color' }),
 	defineField({ name: 'secondaryAccent', type: 'color' }),
-	defineField({ name: 'mediumAccent', type: 'color' }),
 	defineField({ name: 'successAccent', type: 'color' }),
 	defineField({ name: 'failureAccent', type: 'color' }),
 ]
@@ -27,9 +29,9 @@ for (const field of accentColours) {
 
 const calculatedColourOverrides = [
 	defineField({ name: 'secondaryBackground', type: 'color' }),
-	defineField({ name: 'darkerBackground', type: 'color' }),
 	defineField({ name: 'oppositeBackground', type: 'color' }),
 	defineField({ name: 'primaryBorder', type: 'color' }),
+	defineField({ name: 'mediumAccent', type: 'color' }),
 ]
 for (const field of calculatedColourOverrides) { field.fieldset = 'calculatedColourOverrides' }
 
