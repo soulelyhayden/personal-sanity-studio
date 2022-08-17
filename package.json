@@ -1,31 +1,38 @@
 {
-  "name": "personalportfoliosite",
+  "name": "personal-portfolio-site",
   "private": true,
   "version": "1.0.0",
-  "description": "",
   "main": "package.json",
-  "author": "Hayden Soule <haydensoule@outlook.com>",
   "license": "UNLICENSED",
   "scripts": {
     "start": "sanity start",
-    "build": "sanity build"
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "deploy-graphql": "sanity graphql deploy"
   },
   "keywords": [
     "sanity"
   ],
   "dependencies": {
-    "@sanity/base": "^2.10.2",
-    "@sanity/components": "^2.2.6",
-    "@sanity/core": "^2.10.2",
-    "@sanity/default-layout": "^2.10.2",
-    "@sanity/default-login": "^2.8.0",
-    "@sanity/desk-tool": "^2.10.4",
-    "@sanity/vision": "^2.10.0",
-    "prop-types": "^15.7",
-    "react": "^17.0",
-    "react-dom": "^17.0",
-    "react-icons": "^4.2.0",
-    "sanity-plugin-better-slug": "^1.0.0",
-    "sanity-plugin-note-field": "^1.1.1"
+    "@sanity/color-input": "^3.0.0-v3-studio.3",
+    "@sanity/vision": "^3.0.0-dev-preview.13",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-icons": "^4.4.0",
+    "react-is": "^17.0.0",
+    "sanity": "dev-preview",
+    "styled-components": "^5.2.0"
+  },
+  "devDependencies": {
+    "@sanity/eslint-config-studio": "^2.0.0",
+    "eslint": "^8.6.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.0.0"
+  },
+  "prettier": {
+    "semi": false,
+    "printWidth": 100,
+    "bracketSpacing": false,
+    "singleQuote": true
   }
 }
