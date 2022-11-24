@@ -7,7 +7,12 @@ export const about = defineType({
 	type: 'document',
 	fields: [
 		defineField({
-			title: 'Name',
+			title: 'Screen Name // Handle',
+			name: 'handle',
+			type: 'string'
+		}),
+		defineField({
+			title: 'Full Name',
 			name: 'name',
 			type: 'string'
 		}),

@@ -12,20 +12,6 @@ export const siteSettings = defineType({
 			validation: Rule => Rule.required().error(`This site needs a fun name!`)
 		}),
 		defineField({
-			title: 'Logo',
-			name: 'logo',
-			type: 'image',
-			description: 'Site logo displayed in header. Ideally an SVG',
-			// validation: Rule => Rule.required()
-		}),
-		defineField({
-			title: 'Signature',
-			name: 'signature',
-			type: 'image',
-			description: 'Signature used across the site.',
-			// validation: Rule => Rule.required()
-		}),
-		defineField({
 			title: 'Description',
 			name: 'description',
 			type: 'text',

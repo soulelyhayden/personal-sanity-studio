@@ -4,11 +4,12 @@ import { schemaTypes } from './schemas'
 import { structure, defaultDocumentNode } from './structure'
 import { colorInput } from "@sanity/color-input";
 import { visionTool } from '@sanity/vision'
+import { note } from './plugins/note-field'
 
 const defaultDesk = deskTool({
 	structure, defaultDocumentNode
 })
-const deskPlugins = [defaultDesk, colorInput(), visionTool()]
+const deskPlugins = [defaultDesk, colorInput(), visionTool(), note()]
 
 export default createConfig([
 	{

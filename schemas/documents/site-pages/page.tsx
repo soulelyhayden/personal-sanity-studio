@@ -5,6 +5,8 @@ import { homePage } from './templates/homePage';
 
 import { RiPagesFill } from 'react-icons/ri';
 
+import { MdOutlineManageSearch } from 'react-icons/md'
+
 
 
 import sanityClient from '@sanity/client';
@@ -47,6 +49,17 @@ export const page = defineType({
 			validation: Rule => [
 				Rule.required().error("Page needs a title!"),
 			]
+		}),
+		defineField({
+			name: 'test',
+			type: 'note',
+			group: 'pageSettings',
+			options: {
+				icon: MdOutlineManageSearch,
+				headline: 'Optimization Tip',
+				message: <>The following fields are incredibly important for your SEO. You can read more <a href="https://developer.mozilla.org/en-US/docs/Glossary/SEO" target = "_blank" >here</ a >.</>,
+				tone: 'caution'
+			}
 		}),
 		defineField({
 			title: 'Slug',

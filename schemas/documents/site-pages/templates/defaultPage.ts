@@ -7,6 +7,18 @@ export const defaultPage = defineField({
 	type: 'object',
 	fields: [
 		defineField({
+			title: 'Title Section',
+			name: 'titleSection',
+			type: 'string',
+			description: 'No title will be displayed if left blank.',
+			options: {
+				// layout: 'radio',
+				list: [
+					{ title: 'Standard', value: 'standard' },
+				]
+			}
+		}),
+		defineField({
 			title: 'Blocks',
 			name: 'blocks',
 			type: '_blocks',
