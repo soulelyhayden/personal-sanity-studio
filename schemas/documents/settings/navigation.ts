@@ -27,4 +27,13 @@ export const navigation = defineType({
 			to: [{ type: 'page' }],
 		})
 	],
+	preview: {
+		select: {
+		},
+		prepare(value: any) {
+			return {
+				title: `Site Navigation`,
+			}
+		}
+	}
 })

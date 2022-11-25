@@ -52,5 +52,17 @@ export const about = defineType({
 			type: 'array',
 			of: [{ type: 'socialSite' }]
 		})
-	]
+	],
+	preview: {
+		select: {
+			handle: 'handle',
+			name: 'name',
+			// message: 'successMessage'
+		},
+		prepare(value: any) {
+			return {
+				title: `${value.handle ? value.handle : (value.name ? value.name : 'About')}`
+			}
+		}
+	}
 })

@@ -46,7 +46,8 @@ export const textSection = defineType({
 				title: block ?
 					block.children.filter((child:any) => child._type === 'span').map((span:any) => span.text).join('') :
 					'No text entered',
-				subtitle: `Text Block Style: ${textBlockTypeTitle}`
+				subtitle: `Text Block Style: ${textBlockTypeTitle}`,
+				media: GrTextAlignFull
 			}
 		}
 	}

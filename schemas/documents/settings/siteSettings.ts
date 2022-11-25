@@ -32,5 +32,16 @@ export const siteSettings = defineType({
 				layout: 'tags'
 			}
 		})
-	]
+	],
+	preview: {
+		select: {
+			title: 'title',
+			// message: 'successMessage'
+		},
+		prepare(value: any) {
+			return {
+				title: `${value.title ? value.title : 'Site Settings'}`
+			}
+		}
+	}
 })

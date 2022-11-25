@@ -50,8 +50,9 @@ export const socialSite = defineType({
 			const socialSiteTypeTitle = value.type && socialSiteTypes.flatMap(option => option.value === value.type ? [option.title] : [])
 
 			return {
-				title: `Social type: ${socialSiteTypeTitle}`,
+				title: `${socialSiteTypeTitle}`,
 				subtitle: value.title,
+				media: HiAtSymbol
 			}
 		}
 	}

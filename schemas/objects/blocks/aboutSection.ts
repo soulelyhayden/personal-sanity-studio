@@ -27,7 +27,8 @@ export const aboutSection = defineType({
 		prepare(value:any) {
 			return {
 				title: "About Section",
-				subtitle: "Data set in Settings / About"
+				subtitle: "Data set in Settings / About",
+				media: BsFillPersonLinesFill
 			}
 		}
 	}

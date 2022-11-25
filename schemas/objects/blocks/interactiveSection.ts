@@ -31,7 +31,8 @@ export const interactiveSection = defineType({
 
 			return {
 				title: 'Interactive Section',
-				subtitle: 'Section Type: ' + interactiveSectionTitle
+				subtitle: 'Section Type: ' + interactiveSectionTitle,
+				media: HiCursorClick
 			}
 		}
 	}

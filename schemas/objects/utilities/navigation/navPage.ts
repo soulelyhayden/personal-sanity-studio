@@ -33,7 +33,8 @@ export const navPage = defineType({
 			const { title, subtitle, pageTitle } = selection
 			return {
 				title: title ? title : pageTitle,
-				subtitle: subtitle ? subtitle : 'An internal site page.'
+				subtitle: subtitle ? subtitle : 'An internal site page.',
+				media: RiPagesFill
 			}
 		}
 	}

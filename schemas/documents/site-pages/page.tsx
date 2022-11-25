@@ -10,6 +10,7 @@ import { MdOutlineManageSearch } from 'react-icons/md'
 
 
 import sanityClient from '@sanity/client';
+import { BsRulers } from "react-icons/bs";
 const client = sanityClient({
 	projectId: 'hautfgiz',
 	dataset: 'development',
@@ -51,7 +52,7 @@ export const page = defineType({
 			]
 		}),
 		defineField({
-			name: 'test',
+			name: 'Note',
 			type: 'note',
 			group: 'pageSettings',
 			options: {
@@ -73,7 +74,9 @@ export const page = defineType({
 					.toLowerCase()
 					.replace(/\s+/g, '-')
 					.slice(0, 200)
-			}
+			},
+			validation: Rule => Rule.required()
+			
 		}),
 		defineField({
 			title: 'Page Description',
@@ -101,5 +104,16 @@ export const page = defineType({
 		}),
 		defaultPage,
 		homePage
-	]
+	],
+	preview: {
+		select: {
+			title: 'title',
+		},
+		prepare(value: any) {
+			return {
+				title: value.title,
+				media: RiPagesFill
+			}
+		}
+	}
 });

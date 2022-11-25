@@ -25,6 +25,7 @@ export const structure = (S:any, context:any) =>
 								.icon(CgWebsite)
 								.child(
 									S.document()
+										.title('Site Settings')
 										.schemaType('siteSettings')
 										.documentId('siteSettings')
 								),
@@ -32,10 +33,15 @@ export const structure = (S:any, context:any) =>
 								.title('Site Navigation')
 								.icon(IoNavigateCircle)
 								.child(
+									// S.editor() // This shows the content editor in the child pane. We specify what this editor displays with the three methods below...
+									// 	.id("navigation") // Set this to the name of the singleton.
+									// 	.schemaType("navigation") // Here we define which schema this editor will use to generate fields. We want this to use the 'about' schema so it has been filled in accordingly.
+									// 	.documentId("navigation")
 									S.document()
 										.title('Site Navigation')
 										.schemaType('navigation')
 										.documentId('navigation')
+										
 								),
 							S.listItem()
 								.title('Site Theme')

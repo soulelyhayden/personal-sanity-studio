@@ -39,7 +39,8 @@ export const contactForm = defineType({
 		prepare(value:any) {
 			return {
 				title: `Form: ${value.title}`,
-				subtitle: `Success message: ${value.message}`
+				subtitle: `Success message: ${value.message}`,
+				media: MdContactMail
 			}
 		}
 	}

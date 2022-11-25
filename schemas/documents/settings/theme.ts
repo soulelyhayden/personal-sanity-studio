@@ -171,5 +171,14 @@ export const theme = defineType({
 				...calculatedColourOverrides
 			]
 		})
-	]
+	],
+	preview: {
+		select: {
+		},
+		prepare(value: any) {
+			return {
+				title: `Site Theme`,
+			}
+		}
+	}
 })
