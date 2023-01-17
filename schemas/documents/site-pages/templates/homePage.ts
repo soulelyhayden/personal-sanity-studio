@@ -9,7 +9,7 @@ export const homePage = defineField({
 		defineField({
 			title: 'Blocks',
 			name: 'blocks',
-			type: '_blocks',
+			type: 'blockTypes',
 			description: 'Blocks that will appear before the contact forum.',
 		})
 	],

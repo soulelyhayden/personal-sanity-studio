@@ -21,7 +21,7 @@ export const defaultPage = defineField({
 		defineField({
 			title: 'Blocks',
 			name: 'blocks',
-			type: '_blocks',
+			type: 'blockTypes',
 			description: 'The main content of the page.',
 		})
 	],

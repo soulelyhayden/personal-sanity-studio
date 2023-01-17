@@ -26,13 +26,14 @@ import { aboutSection } from "./objects/blocks/aboutSection";
 import { contactForm } from "./objects/blocks/contactForm";
 import { interactiveSection } from "./objects/blocks/interactiveSection";
 import { textSection } from "./objects/blocks/textSection";
+const _blocks = [aboutSection, contactForm, interactiveSection, textSection]
 
-const _blocks = defineType({
+const blockTypes = defineType({
 	title: 'Blocks',
-	name: '_blocks',
+	name: 'blockTypes',
 	type: 'array',
-	of: [aboutSection, contactForm, interactiveSection, textSection],
+	of: [{ type: "aboutSection" }, { type: "contactForm" }, { type: "interactiveSection" }, { type: "textSection" }],
 
 })
 
-export const schemaTypes = [..._documents, ..._utilities, _blocks]
+export const schemaTypes = [..._documents, ..._utilities, ..._blocks, blockTypes]

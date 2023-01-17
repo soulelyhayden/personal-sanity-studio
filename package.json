@@ -5,7 +5,7 @@
   "main": "package.json",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "sanity start",
+    "dev": "sanity dev",
     "build": "sanity build",
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy"
@@ -14,13 +14,13 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/color-input": "^3.0.0-v3-studio.3",
-    "@sanity/vision": "^3.0.0-dev-preview.13",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
+    "@sanity/color-input": "^3.0.2",
+    "@sanity/vision": "^3.2.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-is": "^17.0.0",
-    "sanity": "dev-preview",
+    "sanity": "^3.2.4",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {
