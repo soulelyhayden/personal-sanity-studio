@@ -1,6 +1,6 @@
 import { CustomValidatorResult } from "@sanity/types"
 
-export function emailValidation(emailField: string): CustomValidatorResult | Promise<CustomValidatorResult> {
+export function emailValidation(emailField: string | undefined): CustomValidatorResult | Promise<CustomValidatorResult> {
 	// Allow blank field requires requried validation
 	if (typeof emailField === 'undefined') return true;
 

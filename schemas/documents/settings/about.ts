@@ -38,7 +38,7 @@ export const about = defineType({
 			title: 'Email',
 			name: 'email',
 			type: 'string',
-			validation: Rule => Rule.custom((formContact: string) => emailValidation(formContact))
+			validation: Rule => Rule.custom((formContact: string | undefined) => emailValidation(formContact))
 		}),
 		defineField({
 			title: 'Phone Number',
