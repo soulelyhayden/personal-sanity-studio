@@ -4,11 +4,11 @@
 	"paths": {
 		"@utilities/*": ["schemas/objects/utilities/*"],
 		"@blocks/*": ["schemas/objects/blocks/*"],
-		"@settings/*": ["documents/settings/*"],
-		"@site-pages/*": ["documents/site-pages/*"],
-		"@components/*": ["components/*"]
+		"@settings/*": ["schemas/documents/settings/*"],
+		"@site-pages/*": ["schemas/documents/site-pages/*"],
+		"@components/*": ["schemas/components/*"]
 	},
-    "target": "es5",
+    "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
