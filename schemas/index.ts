@@ -18,7 +18,7 @@ import { page } from "./documents/site-pages/page"
 import { socialSite } from "./objects/utilities/items/socialSite";
 import { workExperience } from "@utilities/items/workExperience";
 
-const _utilities = [ navPage, page, socialSite ]
+const _utilities = [ navPage, page, socialSite, workExperience ]
 
 /**
  * Blocks import
