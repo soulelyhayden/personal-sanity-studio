@@ -7,7 +7,7 @@ export const workExperience = defineType({
 	name: 'workExperience',
 	description: 'Personal & professional experience.',
 	icon: GiOfficeChair,
-	type: 'object',
+	type: 'document',
 	fields: [
 		defineField({
 			title: 'Job Title',
