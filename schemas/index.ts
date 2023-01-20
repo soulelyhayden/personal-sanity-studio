@@ -6,7 +6,7 @@ import { defineType, defineField } from "sanity";
 import { about } from "./documents/settings/about"
 import { siteSettings } from "./documents/settings/siteSettings"
 import { navigation } from "./documents/settings/navigation"
-import { theme } from "./documents/settings/theme";
+import { theme } from "@settings/theme";
 
 const _documents = [about, siteSettings, navigation, theme ]
 
