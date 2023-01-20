@@ -8,7 +8,7 @@ export default createCliConfig({
 	},
 	vite: (viteConfig: UserConfig): UserConfig => ({
 		...viteConfig,
-		plugins: [...viteConfig.plugins, tsconfigPaths()],
+		plugins: [tsconfigPaths()],
 		server: {
 			...viteConfig.server,
 			host: true
