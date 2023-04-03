@@ -1,41 +1,53 @@
 import { defineType, defineField} from "sanity";
 
-const themeColours = [
-	defineField({ name: 'primaryBackground', type: 'color' }),
-	defineField({ name: 'primaryText', type: 'color' }),
-]
-for (const field of themeColours) {
-	field.fieldset = "themeColours";
-	field.validation = (Rule:any) => Rule.required();
+/**
+*	Dynamically create all of the fields
+*
+*/
+
+const themeColoursFieldNames = ['primaryBackground', 'primaryText']
+const themeColoursFields = []
+
+for (const name of themeColoursFieldNames) {
+	themeColoursFields.push(defineField({
+		name: name,
+		type: 'color',
+		fieldset: 'themeColours',
+		validation: (Rule: any) => Rule.required()
+	}))
 }
 
-const accentColours = [
-	defineField({ name: 'primaryAccent', type: 'color' }),
-	defineField({ name: 'secondaryAccent', type: 'color' }),
-	defineField({ name: 'successAccent', type: 'color' }),
-	defineField({ name: 'failureAccent', type: 'color' }),
-]
-for (const field of accentColours) {
-	field.fieldset = "accentColours"
-	field.validation = (Rule:any) => Rule.custom((value:any, context:any) => {
-		const path: any = context.path;
-		if (path[0] == 'defaultTheme' && !value) {
-			return 'Accent colours are required!';
-		}
+const accentColoursFieldNames = ['primaryAccent', 'secondaryAccent', 'successAccent', 'failureAccent']
+const accentColoursFields = []
 
-		return true
-	})
+for (const name of accentColoursFieldNames) {
+	accentColoursFields.push(defineField({
+		name: name,
+		type: 'color',
+		fieldset: 'accentColours',
+		validation: (Rule: any) => Rule.custom((value: any, context: any) => {
+			const path: any = context.path;
+			if (path[0] == 'defaultTheme' && !value) {
+				return 'Accent colours are required!';
+			}
+
+			return true
+		})
+	}))
 }
 
-const calculatedColourOverrides = [
-	defineField({ name: 'secondaryBackground', type: 'color' }),
-	defineField({ name: 'oppositeBackground', type: 'color' }),
-	defineField({ name: 'primaryBorder', type: 'color' }),
-	defineField({ name: 'mediumAccent', type: 'color' }),
-]
-for (const field of calculatedColourOverrides) { field.fieldset = 'calculatedColourOverrides' }
+const calculatedColourOverridesFieldNames = ['secondaryBackground', 'oppositeBackground', 'primaryBorder', 'mediumAccent']
+const calculatedColourOverridesFields = []
 
-const colourFields:any = [...themeColours, ...accentColours, ...calculatedColourOverrides]
+for (const name of calculatedColourOverridesFieldNames) {
+	calculatedColourOverridesFields.push(defineField({
+		name: name,
+		type: 'color',
+		fieldset: 'calculatedColourOverrides'
+	}))
+}
+
+const colourFields: any = [...themeColoursFields, ...accentColoursFields, ...calculatedColourOverridesFields]
 
 /**
 *	Add readable titles to all fields without titles
@@ -63,7 +75,7 @@ const fieldSets = [
 	{
 		name: 'options',
 		title: 'Theme Options',
-		readOnly: true,
+		readOnly: false,
 		options: {
 			collapsible: false, // Makes the whole fieldset collapsible
 			collapsed: false, // Defines if the fieldset should be collapsed by default or not
@@ -73,7 +85,7 @@ const fieldSets = [
 	{
 		name: 'themeColours',
 		title: 'Theme Colours',
-		readOnly: true,
+		readOnly: false,
 		options: {
 			collapsible: true, // Makes the whole fieldset collapsible
 			collapsed: false, // Defines if the fieldset should be collapsed by default or not
@@ -83,7 +95,7 @@ const fieldSets = [
 	{
 		name: 'accentColours',
 		title: 'Accent Colours',
-		readOnly: true,
+		readOnly: false,
 		hidden: ({ currentUser, value, parent }: any) => {
 			return parent?.accentOverride == false;
 		},
@@ -97,7 +109,7 @@ const fieldSets = [
 	{
 		name: 'calculatedColourOverrides',
 		title: 'Calculated Colour Overrides',
-		readOnly: true,
+		readOnly: false,
 		hidden: ({ currentUser, value, parent }: any) => {
 			return parent?.calculatedColourOverride == false;
 		},
@@ -128,14 +140,7 @@ export const theme = defineType({
 			title: 'Logo',
 			name: 'logo',
 			type: 'image',
-			description: 'Site logo displayed in header. Ideally an SVG',
-			// validation: Rule => Rule.required()
-		}),
-		defineField({
-			title: 'Signature',
-			name: 'signature',
-			type: 'image',
-			description: 'Signature used across the site.',
+			description: 'Site logo displayed in header. Ideally an SVG. If no logo is provided text of the site name will appear in the header.',
 			// validation: Rule => Rule.required()
 		}),
 		defineField({
@@ -146,9 +151,9 @@ export const theme = defineType({
 			fieldsets: fieldSets,
 			fields: [
 				calculatedOverrideField,
-				...themeColours,
-				...accentColours,
-				...calculatedColourOverrides
+				...themeColoursFields,
+				...accentColoursFields,
+				...calculatedColourOverridesFields
 			]
 		}),
 		defineField({
@@ -166,9 +171,9 @@ export const theme = defineType({
 					initialValue: false,
 					fieldset: 'options'
 				}),
-				...themeColours,
-				...accentColours,
-				...calculatedColourOverrides
+				...themeColoursFields,
+				...accentColoursFields,
+				...calculatedColourOverridesFields
 			]
 		})
 	],

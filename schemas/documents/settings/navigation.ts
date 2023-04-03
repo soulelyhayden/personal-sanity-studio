@@ -9,7 +9,7 @@ export const navigation = defineType({
 			title: 'Primary Navigation',
 			name: 'primaryNavigation',
 			type: 'array',
-			description: 'Site navigation, the Home Page does not need to be added here.',
+			description: 'Site navigation, the Home Page does not need to be added here unless you wish for it to appear in the navigation.',
 			of: [{ type: 'navPage' }]
 		}),
 		defineField({
@@ -20,10 +20,10 @@ export const navigation = defineType({
 			to: [{ type: 'page' }],
 		}),
 		defineField({
-			title: 'Projects Archive Page',
-			name: 'archivePage',
+			title: 'Projects Page',
+			name: 'projectsPage',
 			type: 'reference',
-			description: 'Select the page used as the Projects Archive.',
+			description: 'Select the page used as the Projects page.',
 			to: [{ type: 'page' }],
 		})
 	],
