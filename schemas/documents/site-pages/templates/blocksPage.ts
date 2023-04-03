@@ -1,9 +1,9 @@
 import { defineType, defineField } from "sanity";
 
-export const defaultPage = defineField({
+export const blocksPage = defineField({
 
-	title: 'Default Page Template',
-	name: 'defaultPage',
+	title: 'Blocks Template',
+	name: 'blocksPage',
 	type: 'object',
 	fields: [
 		defineField({

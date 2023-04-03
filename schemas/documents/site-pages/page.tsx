@@ -1,29 +1,17 @@
 import { defineType, defineField, useCurrentUser } from "sanity";
 
-import { defaultPage } from './templates/defaultPage';
-import { homePage } from './templates/homePage';
+import { blocksPage } from "./templates/blocksPage";
 
 import { RiPagesFill } from 'react-icons/ri';
 
 import { MdOutlineManageSearch } from 'react-icons/md'
 
 
-
-import sanityClient from '@sanity/client';
-import { BsRulers } from "react-icons/bs";
-const client = sanityClient({
-	projectId: 'hautfgiz',
-	dataset: 'development',
-	apiVersion: '2022-08-11', // use current UTC date - see "specifying API version"!
-	useCdn: false, // `false` if you want to ensure fresh data
-})
-
-const pageTamples = [homePage, defaultPage]
+const pageTamples = [blocksPage]
 for (const template of pageTamples) {
 	template.hidden = ({ parent, value }) => parent?.pageType != template.name;
 	template.group = 'pageContent';
 }
-
 
 export const page = defineType({
 	title: "Pages",
@@ -47,7 +35,7 @@ export const page = defineType({
 			type: 'string',
 			group: 'pageSettings',
 			description: 'Title of the page for internal use.',
-			validation: Rule => [
+			validation: (Rule) => [
 				Rule.required().error("Page needs a title!"),
 			]
 		}),
@@ -97,13 +85,11 @@ export const page = defineType({
 			options: {
 				// layout: 'radio',
 				list: [
-					{ title: 'Home', value: 'homePage' },
-					{ title: 'Blocks', value: 'defaultPage' },
+					{ title: 'Blocks', value: 'blocksPage' },
 				]
 			}
 		}),
-		defaultPage,
-		homePage
+		blocksPage
 	],
 	preview: {
 		select: {
