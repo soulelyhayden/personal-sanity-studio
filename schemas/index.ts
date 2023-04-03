@@ -6,7 +6,7 @@ import { defineType, defineField } from "sanity";
 import { about } from "./documents/settings/about"
 import { siteSettings } from "./documents/settings/siteSettings"
 import { navigation } from "./documents/settings/navigation"
-import { theme } from "./documents/settings/theme";
+import { theme } from "@settings/theme";
 
 const _documents = [about, siteSettings, navigation, theme ]
 
@@ -16,8 +16,9 @@ const _documents = [about, siteSettings, navigation, theme ]
 import { navPage } from "./objects/utilities/navigation/navPage"
 import { page } from "./documents/site-pages/page"
 import { socialSite } from "./objects/utilities/items/socialSite";
+import { workExperience } from "@utilities/items/workExperience";
 
-const _utilities = [ navPage, page, socialSite ]
+const _utilities = [ navPage, page, socialSite, workExperience ]
 
 /**
  * Blocks import

@@ -1,6 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es5",
+	"baseUrl": "./",
+	"paths": {
+		"@utilities/*": ["schemas/objects/utilities/*"],
+		"@blocks/*": ["schemas/objects/blocks/*"],
+		"@settings/*": ["schemas/documents/settings/*"],
+		"@site-pages/*": ["schemas/documents/site-pages/*"],
+		"@components/*": ["schemas/components/*"]
+	},
+    "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,

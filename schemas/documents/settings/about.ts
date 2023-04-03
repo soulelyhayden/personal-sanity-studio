@@ -51,6 +51,15 @@ export const about = defineType({
 			description: 'A list of all related social media accounts. The first social is treated as the primary.',
 			type: 'array',
 			of: [{ type: 'socialSite' }]
+		}),
+		defineField({
+			title: 'Work Experience',
+			name: 'workExperience',
+			type: 'array',
+			of: [{
+				type: 'reference',
+				to: [{ type: 'workExperience' }]
+			}]
 		})
 	],
 	preview: {
