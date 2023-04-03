@@ -1,4 +1,4 @@
-import { defineType, defineField } from "sanity";
+import { defineType, defineField} from "sanity";
 
 const themeColours = [
 	defineField({ name: 'primaryBackground', type: 'color' }),
@@ -6,7 +6,7 @@ const themeColours = [
 ]
 for (const field of themeColours) {
 	field.fieldset = "themeColours";
-	field.validation = Rule => Rule.required();
+	field.validation = (Rule:any) => Rule.required();
 }
 
 const accentColours = [
@@ -17,7 +17,7 @@ const accentColours = [
 ]
 for (const field of accentColours) {
 	field.fieldset = "accentColours"
-	field.validation = Rule => Rule.custom((value, context) => {
+	field.validation = (Rule:any) => Rule.custom((value:any, context:any) => {
 		const path: any = context.path;
 		if (path[0] == 'defaultTheme' && !value) {
 			return 'Accent colours are required!';

@@ -7,11 +7,6 @@ export const about = defineType({
 	type: 'document',
 	fields: [
 		defineField({
-			title: 'Screen Name // Handle',
-			name: 'handle',
-			type: 'string'
-		}),
-		defineField({
 			title: 'Full Name',
 			name: 'name',
 			type: 'string'
@@ -29,21 +24,10 @@ export const about = defineType({
 			type: 'file'
 		}),
 		defineField({
-			title: 'Avatar',
-			name: 'avatar',
-			type: 'image',
-			description: 'Portrait orientation works best.'
-		}),
-		defineField({
 			title: 'Email',
 			name: 'email',
 			type: 'string',
 			validation: Rule => Rule.custom((formContact: string | undefined) => emailValidation(formContact))
-		}),
-		defineField({
-			title: 'Phone Number',
-			name: 'phoneNumber',
-			type: 'string'
 		}),
 		defineField({
 			title: 'Socials',
@@ -53,24 +37,21 @@ export const about = defineType({
 			of: [{ type: 'socialSite' }]
 		}),
 		defineField({
-			title: 'Work Experience',
-			name: 'workExperience',
+			title: 'Sponsors',
+			name: 'sponsors',
+			// description: 'Sponsors.',
 			type: 'array',
-			of: [{
-				type: 'reference',
-				to: [{ type: 'workExperience' }]
-			}]
-		})
+			of: [{ type: 'sponsor' }]
+		}),
 	],
 	preview: {
 		select: {
-			handle: 'handle',
 			name: 'name',
 			// message: 'successMessage'
 		},
 		prepare(value: any) {
 			return {
-				title: `${value.handle ? value.handle : (value.name ? value.name : 'About')}`
+				title: `About${value.name ? `: ${value.name}` : ''}`
 			}
 		}
 	}

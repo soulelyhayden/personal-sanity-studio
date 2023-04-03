@@ -16,9 +16,12 @@ const _documents = [about, siteSettings, navigation, theme ]
 import { navPage } from "./objects/utilities/navigation/navPage"
 import { page } from "./documents/site-pages/page"
 import { socialSite } from "./objects/utilities/items/socialSite";
+import { sponsor } from "./objects/utilities/items/sponsor";
 import { workExperience } from "@utilities/items/workExperience";
+import { dateRange } from "@utilities/items/dateRange";
 
-const _utilities = [ navPage, page, socialSite, workExperience ]
+
+const _utilities = [navPage, page, socialSite, workExperience, dateRange, sponsor]
 
 /**
  * Blocks import

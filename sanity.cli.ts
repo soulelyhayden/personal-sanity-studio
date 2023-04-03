@@ -1,12 +1,12 @@
-import {createCliConfig} from 'sanity/cli'
+import { defineCliConfig } from 'sanity/cli'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
-export default createCliConfig({
+export default defineCliConfig({
 	api: {
-		projectId: 'hautfgiz',
-		dataset: 'development'
+		projectId: 'ijjxi0wa',
+		dataset: 'production'
 	},
-	vite: (viteConfig: UserConfig): UserConfig => ({
+	vite: (viteConfig: any): any => ({
 		...viteConfig,
 		plugins: [...viteConfig.plugins,tsconfigPaths()],
 		server: {
