@@ -1,6 +1,6 @@
 import { defineType, defineField, useCurrentUser } from "sanity";
 
-import { blocksPage } from "./templates/blocksPage";
+import { blocksPage } from "@site-pages/templates/blocksPage";
 
 import { RiPagesFill } from 'react-icons/ri';
 
