@@ -6,6 +6,7 @@ import { colorInput } from "@sanity/color-input";
 import { visionTool } from '@sanity/vision'
 import { noteField } from 'sanity-plugin-note-field'
 
+
 const defaultDesk = deskTool({
 	structure, defaultDocumentNode
 })

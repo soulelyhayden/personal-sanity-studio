@@ -1,16 +1,28 @@
-import { defineType, defineField, useCurrentUser } from "sanity";
+import { defineType, defineField, useCurrentUser,} from "sanity";
+import { SlugInput } from 'sanity-plugin-prefixed-slug'
 
 import { blocksPage } from "@site-pages/templates/blocksPage";
-
 import { RiPagesFill } from 'react-icons/ri';
-
 import { MdOutlineManageSearch } from 'react-icons/md'
 
+import { createClient } from '@sanity/client'
+import { isUniqueAcrossAllDocuments } from "@lib/isUnique";
+
+const client = createClient({
+	projectId: 'ijjxi0wa',
+	dataset: 'production',
+	apiVersion: '2023-04-04',
+})
 
 const pageTamples = [blocksPage]
 for (const template of pageTamples) {
 	template.hidden = ({ parent, value }) => parent?.pageType != template.name;
 	template.group = 'pageContent';
+}
+
+async function getDocumentSubPath(document: any) {
+	console.log(document)
+	return
 }
 
 export const page = defineType({
@@ -50,21 +62,45 @@ export const page = defineType({
 				tone: 'caution'
 			}
 		}),
+		// {
+		// 	name: 'categories',
+		// 	type: 'reference',
+		// 	to: [{ type: 'page'}],
+		// 	initialValue: (params, context) => {
+		// 		const client = context.getClient({ apiVersion: '2022-11-01' })
+		// 		return client.fetch('*[_type == "category"]{_ref: _id, _key: _id}')
+		// 	}
+		// }
 		defineField({
 			title: 'Slug',
 			name: 'slug',
 			type: 'slug',
-			group: 'pageSettings',
-			description: 'Custom slugs are generally not recommended, use the generate option.',
+			components: {
+				input: SlugInput,
+			},
 			options: {
 				source: 'title',
+				// @ts-ignore
+				urlPrefix: async (document) => {
+					const query = '*[_id == "navigation"]{"projectsSlug": projectsPage -> slug.current}[0].projectsSlug'
+					const projectsPageTitle = await client.fetch(query)
+					return `/${projectsPageTitle ? projectsPageTitle : ''}`
+				},
 				slugify: input => input
 					.toLowerCase()
 					.replace(/\s+/g, '-')
-					.slice(0, 200)
+					.slice(0, 200),
+				// Use isUnique/maxLength just like you would w/ the regular slug field
+				isUnique: isUniqueAcrossAllDocuments,
+				maxLength: 30,
+				// If you want to save the full URL in the slug object, set storeFullUrl to `true`
+				// Example storage: { _type: "slug", current: "my-slug", fullUrl: "https://site.com/my-slug" }
+				storeFullUrl: false,
 			},
+			group: 'pageSettings',
+			description: 'Custom slugs are generally not recommended, use the generate option.',
 			validation: Rule => Rule.required()
-			
+
 		}),
 		defineField({
 			title: 'Page Description',

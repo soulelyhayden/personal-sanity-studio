@@ -2,6 +2,7 @@
   "compilerOptions": {
 	"baseUrl": "./",
 	"paths": {
+		"@lib/*": ["lib/*"],
 		"@utilities/*": ["schemas/objects/utilities/*"],
 		"@blocks/*": ["schemas/objects/blocks/*"],
 		"@settings/*": ["schemas/documents/settings/*"],

@@ -5417,7 +5417,16 @@
     "lodash" "^4.17.21"
     "prop-types" "^15.7.2"
 
-"sanity@^3", "sanity@^3.2.4":
+"sanity-plugin-prefixed-slug@^2.0.0":
+  "integrity" "sha512-h/2BPcFwgmw4e+h5Gv6ZompYSMcffha2tSa1wXxdOL8nUbs8Cs5vBz6A0G9UT3fG1ByF5Lx4qQ7UEwsy0Y8W5w=="
+  "resolved" "https://registry.npmjs.org/sanity-plugin-prefixed-slug/-/sanity-plugin-prefixed-slug-2.0.0.tgz"
+  "version" "2.0.0"
+  dependencies:
+    "@sanity/incompatible-plugin" "^1.0.4"
+    "@sanity/ui" "^1.0.0"
+    "speakingurl" "^14.0.1"
+
+"sanity@^3", "sanity@^3.0.0", "sanity@^3.2.4":
   "integrity" "sha512-kC1c+a5bWtjmZUZxw8OrzIhZ9YrjZEkto2vqv1Mbg8eMZZ79gnW57F90NdBOWY3tVwN43VOqJfHpFUURTg2ULA=="
   "resolved" "https://registry.npmjs.org/sanity/-/sanity-3.8.2.tgz"
   "version" "3.8.2"
@@ -5811,7 +5820,7 @@
     "hey-listen" "^1.0.8"
     "tslib" "^2.1.0"
 
-"styled-components@^5.2", "styled-components@^5.2.0", "styled-components@>= 2":
+"styled-components@^5.2", "styled-components@^5.2.0", "styled-components@>= 2", "styled-components@>= 5.0.0":
   "integrity" "sha512-Aj3kb13B75DQBo2oRwRa/APdB5rSmwUfN5exyarpX+x/tlM/rwZA2vVk2vQgVSP6WKaZJHWwiFrzgHt+CLtB4A=="
   "resolved" "https://registry.npmjs.org/styled-components/-/styled-components-5.3.9.tgz"
   "version" "5.3.9"
