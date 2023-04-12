@@ -4,9 +4,9 @@
 	"paths": {
 		"@lib/*": ["lib/*"],
 		"@utilities/*": ["schemas/objects/utilities/*"],
-		"@blocks/*": ["schemas/objects/blocks/*"],
+		"@documents/*": ["schemas/documents/*"],
+		"@objects/*": ["schemas/objects/*"],
 		"@settings/*": ["schemas/documents/settings/*"],
-		"@site-pages/*": ["schemas/documents/site-pages/*"],
 		"@components/*": ["schemas/components/*"]
 	},
     "target": "es6",

@@ -1,7 +1,7 @@
-import { defineType, defineField, useCurrentUser,} from "sanity";
+import { defineType, defineField, useCurrentUser, SlugRule,} from "sanity";
 import { SlugInput } from 'sanity-plugin-prefixed-slug'
 
-import { blocksPage } from "@site-pages/templates/blocksPage";
+import { blocksPage } from "@documents/site-pages/templates/blocksPage";
 import { RiPagesFill } from 'react-icons/ri';
 import { MdOutlineManageSearch } from 'react-icons/md'
 
@@ -81,11 +81,7 @@ export const page = defineType({
 			options: {
 				source: 'title',
 				// @ts-ignore
-				urlPrefix: async (document) => {
-					const query = '*[_id == "navigation"]{"projectsSlug": projectsPage -> slug.current}[0].projectsSlug'
-					const projectsPageTitle = await client.fetch(query)
-					return `/${projectsPageTitle ? projectsPageTitle : ''}`
-				},
+				urlPrefix: ``,
 				slugify: input => input
 					.toLowerCase()
 					.replace(/\s+/g, '-')
@@ -99,7 +95,7 @@ export const page = defineType({
 			},
 			group: 'pageSettings',
 			description: 'Custom slugs are generally not recommended, use the generate option.',
-			validation: Rule => Rule.required()
+			validation: (Rule:SlugRule) => Rule.required()
 
 		}),
 		defineField({
