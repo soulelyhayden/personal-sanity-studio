@@ -31,10 +31,9 @@ const _content = [page, project]
  */
 import { aboutSection } from "@objects/blocks/aboutSection";
 import { contactForm } from "@objects/blocks/contactForm";
-import { interactiveSection } from "@objects/blocks/interactiveSection";
 import { textSection } from "@objects/blocks/textSection";
 
-const _blocks = [aboutSection, contactForm, interactiveSection, textSection]
+const _blocks = [aboutSection, contactForm, textSection]
 
 const blockTypeList = (function () {
 	let list: Array<{ type: string }> = [];
