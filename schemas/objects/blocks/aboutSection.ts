@@ -9,12 +9,6 @@ export const aboutSection = defineType({
 	icon: BsFillPersonLinesFill,
 	fields: [
 		defineField({
-			title: 'Personal Info',
-			name: 'personalInfo',
-			type: 'boolean',
-			description: 'Whether to include personal information.',
-		}),
-		defineField({
 			title: 'Curriculum Vitae Download',
 			name: 'downloadCV',
 			type: 'string',

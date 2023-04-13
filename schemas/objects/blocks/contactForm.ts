@@ -20,7 +20,7 @@ export const contactForm = defineType({
 			name: 'formContact',
 			type: 'string',
 			description: "Enter the email address you would like to receive form submissions to. If left blank it will default to the email provided in under Site Settings / About",
-			validation: Rule => Rule.required().custom((formContact:string) => emailValidation(formContact))
+			validation: (Rule) => Rule.custom((formContact:string | undefined) => emailValidation(formContact))
 		}),
 		defineField({
 			title: 'Success Message',
