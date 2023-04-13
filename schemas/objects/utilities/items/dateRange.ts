@@ -1,5 +1,6 @@
 import { defineType, defineField } from "sanity";
 import { BsFillCalendarRangeFill } from 'react-icons/bs';
+import { BiCommentDetail } from "react-icons/bi";
 
 export const dateRange = defineType({
 	title: 'Date Range',
@@ -9,10 +10,18 @@ export const dateRange = defineType({
 	type: 'object',
 	fields: [
 		defineField({
+			name: 'Note',
+			type: 'note',
+			description: 'Be as accurate when inputting date information as possible, but be aware that specificity is defined by the site frontend (e.g. only the year might appear on the frontend if that is what the design called for).',
+			options: {
+				icon: BiCommentDetail,
+				tone: 'primary',
+			},
+		}),
+		defineField({
 			title: 'Start Date',
 			name: 'startDate',
 			type: 'date',
-			description: 'When to start the duration.',
 			validation: Rule => Rule.required()
 		}),
 		defineField({
@@ -20,6 +29,7 @@ export const dateRange = defineType({
 			name: 'endDate',
 			type: 'date',
 			description: 'Leave blank for ongoing.',
+			validation: Rule => Rule.min(Rule.valueOfField('startDate')).error('End Date cannot be before Start Date')
 		})
 	]
 })

@@ -39,6 +39,16 @@ export const project = defineType({
 			]
 		}),
 		defineField({
+			title: 'Date Range',
+			name: 'dateRange',
+			type: 'dateRange',
+			group: 'projectSettings',
+			description: 'Range of time for the project.',
+			validation: (Rule) => [
+				Rule.required().error("Project needs a date!"),
+			]
+		}),
+		defineField({
 			title: 'project Description',
 			name: 'description',
 			type: 'text',

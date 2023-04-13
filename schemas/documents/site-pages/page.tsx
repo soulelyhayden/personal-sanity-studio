@@ -20,11 +20,6 @@ for (const template of pageTamples) {
 	template.group = 'pageContent';
 }
 
-async function getDocumentSubPath(document: any) {
-	console.log(document)
-	return
-}
-
 export const page = defineType({
 	title: "Pages",
 	name: "page",
