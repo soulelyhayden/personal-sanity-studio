@@ -34,8 +34,9 @@ import { contactForm } from "@objects/blocks/contactForm";
 import { textSection } from "@objects/blocks/textSection";
 import { projectsArchive } from "@objects/blocks/projectsArchive"
 import { textsArchive } from "@objects/blocks/textsArchive";
+import { sponsorsBlock } from "@objects/blocks/sponsors";
 
-const _blocks = [aboutSection, contactForm, textSection, projectsArchive, textsArchive]
+const _blocks = [aboutSection, contactForm, textSection, projectsArchive, textsArchive, sponsorsBlock]
 
 const blockTypeList = (function () {
 	let list: Array<{ type: string }> = [];
