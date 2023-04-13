@@ -55,22 +55,12 @@ export const page = defineType({
 			name: 'Note',
 			type: 'note',
 			group: 'pageSettings',
+			description: <>The following fields are incredibly important for your SEO. You can read more <a href="https://developer.mozilla.org/en-US/docs/Glossary/SEO" target="_blank" >here</ a >.</>,
 			options: {
 				icon: MdOutlineManageSearch,
-				headline: 'Optimization Tip',
-				message: <>The following fields are incredibly important for your SEO. You can read more <a href="https://developer.mozilla.org/en-US/docs/Glossary/SEO" target = "_blank" >here</ a >.</>,
-				tone: 'caution'
-			}
+				tone: 'caution',
+			},
 		}),
-		// {
-		// 	name: 'categories',
-		// 	type: 'reference',
-		// 	to: [{ type: 'page'}],
-		// 	initialValue: (params, context) => {
-		// 		const client = context.getClient({ apiVersion: '2022-11-01' })
-		// 		return client.fetch('*[_type == "category"]{_ref: _id, _key: _id}')
-		// 	}
-		// }
 		defineField({
 			title: 'Slug',
 			name: 'slug',
