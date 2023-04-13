@@ -5,14 +5,8 @@ import { blocksPage } from "@documents/site-pages/templates/blocksPage";
 import { RiPagesFill } from 'react-icons/ri';
 import { MdOutlineManageSearch } from 'react-icons/md'
 
-import { createClient } from '@sanity/client'
+import { customClient } from '@lib/customClient'
 import { isUniqueAcrossAllDocuments } from "@lib/isUnique";
-
-const client = createClient({
-	projectId: 'ijjxi0wa',
-	dataset: 'production',
-	apiVersion: '2023-04-04',
-})
 
 const pageTamples = [blocksPage]
 for (const template of pageTamples) {

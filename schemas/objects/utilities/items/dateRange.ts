@@ -21,8 +21,7 @@ export const dateRange = defineType({
 		defineField({
 			title: 'Start Date',
 			name: 'startDate',
-			type: 'date',
-			validation: Rule => Rule.required()
+			type: 'date'
 		}),
 		defineField({
 			title: 'End Date',

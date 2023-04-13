@@ -3,14 +3,8 @@ import { SlugInput } from 'sanity-plugin-prefixed-slug'
 
 import { GiPaintBrush } from 'react-icons/gi';
 
-import { createClient } from '@sanity/client'
+import { customClient } from '@lib/customClient'
 import { isUniqueAcrossAllDocuments } from "@lib/isUnique";
-
-const client = createClient({
-	projectId: 'ijjxi0wa',
-	dataset: 'production',
-	apiVersion: '2023-04-04',
-})
 
 export const project = defineType({
 	title: "Projects",
@@ -39,17 +33,16 @@ export const project = defineType({
 			]
 		}),
 		defineField({
-			title: 'Date Range',
-			name: 'dateRange',
+			title: 'Date',
+			name: 'date',
 			type: 'dateRange',
 			group: 'projectSettings',
-			description: 'Range of time for the project.',
 			validation: (Rule) => [
-				Rule.required().error("Project needs a date!"),
+				Rule.required().warning("Projects should have a date!"),
 			]
 		}),
 		defineField({
-			title: 'project Description',
+			title: 'Project Description',
 			name: 'description',
 			type: 'text',
 			group: 'projectSettings',
@@ -67,7 +60,7 @@ export const project = defineType({
 				// @ts-ignore
 				urlPrefix: async (document) => {
 					const query = '*[_id == "navigation"]{"projectsSlug": projectsPage -> slug.current}[0].projectsSlug'
-					const projectsPageTitle = await client.fetch(query)
+					const projectsPageTitle = await customClient.fetch(query)
 					return `/${projectsPageTitle ? projectsPageTitle : ''}`
 				},
 				slugify: input => input
