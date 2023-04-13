@@ -3,7 +3,7 @@ import { MdSettings } from "react-icons/md";
 import { CgWebsite } from "react-icons/cg";
 // import { GrNavigate } from "react-icons/gr";
 import { IoNavigateCircle } from "react-icons/io5";
-import { BsFillPersonLinesFill } from "react-icons/bs";
+import { BsFileText, BsFillPersonLinesFill } from "react-icons/bs";
 import { RiPaintBrushFill } from "react-icons/ri";
 import { FaTags } from "react-icons/fa";
 import { StructureBuilder, StructureResolverContext } from "sanity/desk";
@@ -47,7 +47,7 @@ S.list().title('Content').items([
 		])
 	),
 	/** TEXTS */
-	S.listItem().title('Texts').icon(AiFillFileImage).child(
+	S.listItem().title('Texts').icon(BsFileText).child(
 		S.list().title('Texts').items([
 			S.documentTypeListItem('textTag'),
 			S.divider(),

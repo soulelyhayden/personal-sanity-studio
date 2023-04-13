@@ -2,7 +2,7 @@ import { defineType, defineField, useCurrentUser, SlugRule,} from "sanity";
 import { SlugInput } from 'sanity-plugin-prefixed-slug'
 import { internalText } from "./textTemplates/internalText";
 
-import { RiPagesFill } from 'react-icons/ri';
+import { BsFileText } from 'react-icons/bs';
 import { isUniqueAcrossAllDocuments } from "@lib/isUnique";
 
 const textTemplates = [internalText]
@@ -15,7 +15,7 @@ export const textDocument = defineType({
 	title: "Texts",
 	name: "textDocument",
 	type: 'document',
-	icon: RiPagesFill,
+	icon: BsFileText,
 	groups: [
 		{
 			name: 'textSettings',
@@ -58,7 +58,7 @@ export const textDocument = defineType({
 		prepare(value: any) {
 			return {
 				title: value.title,
-				media: RiPagesFill
+				media: BsFileText
 			}
 		}
 	}
