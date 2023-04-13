@@ -64,8 +64,11 @@ const blockTypes = defineType({
  * Project items import
  */
 // import { aboutSection } from "@objects/aboutSection";
+import { imageObject } from "@objects/project-items/imageObject";
+import { textObject } from "@objects/project-items/textObject";
+import { embedObject } from "@objects/project-items/embedObject";
 
-const _projectItems: Array<any> = []
+const _projectItems: Array<any> = [imageObject, textObject, embedObject]
 
 const projectTypeList = ( function() {
 	let list: Array<{type: string}> = [];

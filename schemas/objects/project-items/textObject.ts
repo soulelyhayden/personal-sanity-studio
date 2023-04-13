@@ -3,13 +3,13 @@ import { GrTextAlignFull } from "react-icons/gr";
 
 const textBlockTypes = [
 	{ title: 'Plain', value: 'plain' },
-	{ title: 'Highlighted', value: 'highlighted' },
-	{ title: 'Block', value: 'block' },
+	// { title: 'Highlighted', value: 'highlighted' },
+	// { title: 'Block', value: 'block' },
 ]
 
-export const textSection = defineType({
-	title: 'Text Section',
-	name: 'textSection',
+export const textObject = defineType({
+	title: 'Text',
+	name: 'textObject',
 	type: 'object',
 	icon: GrTextAlignFull,
 	fields: [
@@ -18,7 +18,6 @@ export const textSection = defineType({
 			name: 'text',
 			type: 'array',
 			of: [{ type: 'block' }],
-			description: 'Add formatted text to appear within the block.',
 		}),
 		defineField({
 			title: 'Text Type',
@@ -38,13 +37,13 @@ export const textSection = defineType({
 			blocks: 'text',
 			textType: 'textType'
 		},
-		prepare(value:any) {
-			const block = (value.blocks || []).find((block:any) => block._type === 'block')
+		prepare(value: any) {
+			const block = (value.blocks || []).find((block: any) => block._type === 'block')
 			const textBlockTypeTitle = value.textType && textBlockTypes.flatMap(option => option.value === value.textType ? [option.title] : [])
 
 			return {
 				title: block ?
-					block.children.filter((child:any) => child._type === 'span').map((span:any) => span.text).join('') :
+					block.children.filter((child: any) => child._type === 'span').map((span: any) => span.text).join('') :
 					'No text entered',
 				subtitle: `Text Block Style: ${textBlockTypeTitle}`,
 				media: GrTextAlignFull

@@ -1,4 +1,4 @@
-import { defineType, defineField, useCurrentUser, SlugRule } from "sanity";
+import { defineType, defineField, useCurrentUser, SlugRule, StringRule } from "sanity";
 import { SlugInput } from 'sanity-plugin-prefixed-slug'
 
 import { AiFillFileImage } from 'react-icons/ai';
@@ -14,11 +14,11 @@ export const project = defineType({
 	groups: [
 		{
 			name: 'projectSettings',
-			title: 'project Settings',
+			title: 'Project Settings',
 		},
 		{
 			name: 'projectContent',
-			title: 'project Content',
+			title: 'Project Content',
 		},
 	],
 	fields: [
@@ -28,7 +28,7 @@ export const project = defineType({
 			type: 'string',
 			group: 'projectSettings',
 			description: 'Title of the project.',
-			validation: (Rule) => [
+			validation: (Rule: StringRule) => [
 				Rule.required().error("Project needs a title!"),
 			]
 		}),
@@ -82,6 +82,13 @@ export const project = defineType({
 			validation: (Rule:SlugRule) => Rule.required()
 
 		}),
+		defineField({
+			title: 'Content',
+			name: 'content',
+			type: 'projectTypes',
+			group: 'projectContent',
+			description: 'The main content of the project.',
+		})
 	],
 	preview: {
 		select: {

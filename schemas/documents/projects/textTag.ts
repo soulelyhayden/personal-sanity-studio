@@ -34,11 +34,12 @@ export const textTag = defineType({
 		defineField({
 			title: 'Priority',
 			name: 'priority',
-			description: 'Determines tag order. Tags are ordered based on their priority first, and then alphabetically. High priority tags appear closer to the start of a list of tags. Tags without an assigned priority are treated as 0.',
+			description: 'Determines tag order. Tags are ordered based on their priority first, and then alphabetically. High priority tags appear closer to the start of a list of tags, -1 priority sets the tag to invisible. Tags without an assigned priority are treated as 0.',
 			type: 'number',
 			validation: (Rule:NumberRule) => [
+				Rule.min(-1).error("Tags cannot be more invisible."),
 				Rule.integer().error("Let's stick to whole numbers for this!"),
-				Rule.positive().error("No need for negative priority; all tags have value!")
+				// Rule.positive().error("No need for negative priority; all tags have value!")
 			]
 		}),
 		defineField({
