@@ -19,10 +19,5 @@ export const internalText = defineField({
 			type: 'array',
 			of: [{ type: 'internalLink' }, { type: 'externalLink' }]
 		})
-	],
-	preview: {
-		select: {
-			title: 'title'
-		}
-	}
+	]
 })

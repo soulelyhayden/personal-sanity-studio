@@ -1,11 +1,12 @@
 import { defineType, defineField, useCurrentUser, SlugRule,} from "sanity";
 import { SlugInput } from 'sanity-plugin-prefixed-slug'
 import { internalText } from "./textTemplates/internalText";
+import { externalText } from "./textTemplates/externalText";
 
 import { BsFileText } from 'react-icons/bs';
 import { isUniqueAcrossAllDocuments } from "@lib/isUnique";
 
-const textTemplates = [internalText]
+const textTemplates = [internalText, externalText]
 for (const template of textTemplates) {
 	template.hidden = ({ parent, value }) => parent?.textType != template.name;
 	template.group = 'textContent';
@@ -38,6 +39,31 @@ export const textDocument = defineType({
 			]
 		}),
 		defineField({
+			title: 'Date',
+			name: 'date',
+			type: 'dateRange',
+			group: 'textSettings',
+			validation: (Rule) => [
+				Rule.required().warning("Texts should have a date!"),
+			]
+		}),
+		defineField({
+			title: 'Page Description',
+			name: 'description',
+			type: 'text',
+			group: 'textSettings',
+			description: 'A concise description of the text, if none is provided an abbreviated version of the text will be used if it is an internal text, otherwise no description will appear.',
+		}),
+		defineField({
+			title: 'Tags',
+			name: 'tags',
+			type: 'array',
+			of: [{ 
+				type: 'reference',
+				to: [{type:'textTag'}]
+			 }]
+		}),
+		defineField({
 			title: 'Text Type',
 			name: 'textType',
 			type: 'string',
@@ -46,10 +72,13 @@ export const textDocument = defineType({
 				// layout: 'radio',
 				list: [
 					{ title: 'Internal Text', value: 'internalText' },
+					{ title: 'External Text', value: 'externalText' },
+
 				]
 			}
 		}),
-		internalText
+		internalText,
+		externalText
 	],
 	preview: {
 		select: {

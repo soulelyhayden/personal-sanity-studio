@@ -6,7 +6,6 @@ export const dateRange = defineType({
 	title: 'Date Range',
 	name: 'dateRange',
 	icon: BsFillCalendarRangeFill,
-	description: 'Select a range of dates.',
 	type: 'object',
 	fields: [
 		defineField({
@@ -19,16 +18,16 @@ export const dateRange = defineType({
 			},
 		}),
 		defineField({
-			title: 'Start Date',
-			name: 'startDate',
+			title: 'Date',
+			name: 'date',
 			type: 'date'
 		}),
-		defineField({
-			title: 'End Date',
-			name: 'endDate',
-			type: 'date',
-			description: 'Leave blank for ongoing.',
-			validation: Rule => Rule.min(Rule.valueOfField('startDate')).error('End Date cannot be before Start Date')
-		})
+		// defineField({
+		// 	title: 'End Date',
+		// 	name: 'endDate',
+		// 	type: 'date',
+		// 	description: 'Leave blank for ongoing.',
+		// 	validation: Rule => Rule.min(Rule.valueOfField('startDate')).error('End Date cannot be before Start Date')
+		// })
 	]
 })
