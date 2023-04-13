@@ -16,18 +16,21 @@ const _documents = [about, siteSettings, navigation, theme, projectTag, textTag]
 /**
  * Utilities import
  */
-import { navPage } from "@utilities/navigation/navPage"
+import { internalLink } from "@utilities/navigation/internalLink"
 import { socialSite } from "@utilities/items/socialSite";
 import { sponsor } from "@utilities/items/sponsor";
 import { dateRange } from "@utilities/items/dateRange";
+import { externalLink } from "@utilities/navigation/externalLink"
 
 
-const _utilities = [navPage, socialSite, dateRange, sponsor]
+const _utilities = [internalLink, socialSite, dateRange, sponsor, externalLink]
 
 import { page } from "@documents/site-pages/page"
 import { project } from "@documents/projects/project";
+import { textDocument } from "@documents/projects/textDocument";
 
-const _content = [page, project]
+
+const _content = [page, project, textDocument]
 
 /**
  * Blocks import

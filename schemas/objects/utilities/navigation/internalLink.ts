@@ -1,9 +1,9 @@
 import { defineType, defineField } from "sanity";
 import { RiPagesFill } from 'react-icons/ri';
 
-export const navPage = defineType({
+export const internalLink = defineType({
 	title: 'Internal Page',
-	name: 'navPage',
+	name: 'internalLink',
 	description: 'Navigation to a page on your site',
 	type: 'object',
 	icon: RiPagesFill,

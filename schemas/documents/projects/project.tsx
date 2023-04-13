@@ -57,16 +57,19 @@ export const project = defineType({
 			},
 			options: {
 				source: 'title',
+				
+				slugify: input => input
+					.toLowerCase()
+					.replace(/[^a-z0-9_\-]/gi, '-')
+					.replace(/-{2,}/g, '-')
+					.slice(0, 200),
 				// @ts-ignore
 				urlPrefix: async (document) => {
 					const query = '*[_id == "navigation"]{"projectsSlug": projectsPage -> slug.current}[0].projectsSlug'
 					const projectsPageTitle = await customClient.fetch(query)
 					return `/${projectsPageTitle ? projectsPageTitle : ''}`
 				},
-				slugify: input => input
-					.toLowerCase()
-					.replace(/\s+/g, '-')
-					.slice(0, 200),
+
 				// Use isUnique/maxLength just like you would w/ the regular slug field
 				isUnique: isUniqueAcrossAllDocuments,
 				maxLength: 30,

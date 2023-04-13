@@ -1,7 +1,7 @@
 import { defineType, defineField } from "sanity";
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
-export const navPage = defineType({
+export const externalLink = defineType({
 	title: 'External Link',
 	name: 'externalLink',
 	description: 'Navigation to a page outside of your site',

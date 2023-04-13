@@ -10,7 +10,7 @@ export const navigation = defineType({
 			name: 'primaryNavigation',
 			type: 'array',
 			description: 'Site navigation, the Home Page does not need to be added here unless you wish for it to appear in the navigation.',
-			of: [{ type: 'navPage' }]
+			of: [{ type: 'internalLink' }]
 		}),
 		defineField({
 			title: 'Home Page',

@@ -6,12 +6,11 @@ import { IoNavigateCircle } from "react-icons/io5";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { RiPaintBrushFill } from "react-icons/ri";
 import { FaTags } from "react-icons/fa";
-import { ListItemBuilder, StructureBuilder, StructureContext, StructureResolverContext } from "sanity/desk";
+import { StructureBuilder, StructureResolverContext } from "sanity/desk";
 import { AiFillFileImage } from "react-icons/ai";
 
 
-
-export const structure = (S:StructureBuilder, context:StructureResolverContext) => 
+export const structure = async(S:StructureBuilder, context:StructureResolverContext) => 
 S.list().title('Content').items([
 	/* SETTINGS */
 	S.listItem().title('Settings').icon(MdSettings).child(		
@@ -36,17 +35,26 @@ S.list().title('Content').items([
 	),
 	S.divider(),
 
+	/** PAGES */
 	S.documentTypeListItem('page').schemaType('page'),
 
+	/** PROJECTS */
 	S.listItem().title('Projects').icon(AiFillFileImage).child(
 		S.list().title('Projects').items([
 			S.documentTypeListItem('projectTag'),
 			S.divider(),
-			S.documentTypeListItem('project')
+			S.documentTypeListItem('project'),			
+		])
+	),
+	/** TEXTS */
+	S.listItem().title('Texts').icon(AiFillFileImage).child(
+		S.list().title('Texts').items([
+			S.documentTypeListItem('textTag'),
+			S.divider(),
+			S.documentTypeListItem('textDocument'),
 		])
 	),
 ])
-
 interface docSchemaOptions {
 	schemaType: any;
 }

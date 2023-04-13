@@ -63,7 +63,8 @@ export const page = defineType({
 				urlPrefix: ``,
 				slugify: input => input
 					.toLowerCase()
-					.replace(/\s+/g, '-')
+					.replace(/[^a-z0-9_\-]/gi, '-')
+					.replace(/-{2,}/g, '-')
 					.slice(0, 200),
 				// Use isUnique/maxLength just like you would w/ the regular slug field
 				isUnique: isUniqueAcrossAllDocuments,
