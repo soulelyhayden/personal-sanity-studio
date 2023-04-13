@@ -49,6 +49,15 @@ export const project = defineType({
 			description: 'A description of the project.',
 		}),
 		defineField({
+			title: 'Tags',
+			name: 'tags',
+			type: 'array',
+			of: [{
+				type: 'reference',
+				to: [{ type: 'projectTag' }]
+			}]
+		}),
+		defineField({
 			title: 'Slug',
 			name: 'slug',
 			type: 'slug',

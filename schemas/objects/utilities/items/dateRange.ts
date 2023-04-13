@@ -22,12 +22,20 @@ export const dateRange = defineType({
 			name: 'date',
 			type: 'date'
 		}),
-		// defineField({
-		// 	title: 'End Date',
-		// 	name: 'endDate',
-		// 	type: 'date',
-		// 	description: 'Leave blank for ongoing.',
-		// 	validation: Rule => Rule.min(Rule.valueOfField('startDate')).error('End Date cannot be before Start Date')
-		// })
+		defineField({
+			title: 'End Date',
+			name: 'endDate',
+			type: 'date',
+			description: 'Leave blank for ongoing.',
+			hidden: ({ parent, value }) => parent?.range != true,
+			validation: Rule => Rule.min(Rule.valueOfField('startDate')).error('End Date cannot be before Start Date')
+		}),
+		defineField({
+			title: 'Range',
+			name: 'range',
+			type: 'boolean',
+			description: 'Whether the date is a range or singular.',
+			initialValue: false
+		}),
 	]
 })
