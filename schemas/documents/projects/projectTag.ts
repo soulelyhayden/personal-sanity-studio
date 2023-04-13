@@ -1,17 +1,17 @@
 import { FaTags } from 'react-icons/fa';
-import { Rule, StringRule, ValidationContext, defineType } from 'sanity';
+import { NumberRule, Rule, StringRule, defineField, defineType } from 'sanity';
 
-export const tag = defineType({
-	title: 'Tags',
+export const projectTag = defineType({
+	title: 'Project Tags',
 	name: 'projectTag',
 	type: 'document',
 	icon: FaTags,
 	fields: [
-		{
+		defineField({
 			title: 'Title',
 			name: 'title',
 			type: 'string',
-			validation: (rule:Rule) => [
+			validation: (rule:StringRule) => [
 				rule.required().error("Tag needs a title!"),
 				rule.custom((title, context) => {
 					const id = context.document?._id.replace(/^drafts\./, '')
@@ -30,11 +30,21 @@ export const tag = defineType({
 						})
 				}).error()
 			]
-		},
-		{
+		}),
+		defineField({
+			title: 'Priority',
+			name: 'priority',
+			description: 'Determines tag order. Tags are ordered based on their priority first, and then alphabetically. High priority tags appear closer to the start of a list of tags. Tags without an assigned priority are treated as 0.',
+			type: 'number',
+			validation: (Rule:NumberRule) => [
+				Rule.integer().error("Let's stick to whole numbers for this!"),
+				Rule.positive().error("No need for negative priority; all tags have value!")
+			]
+		}),
+		defineField({
 			title: 'Description',
 			name: 'description',
 			type: 'string'
-		}
+		})
 	]
 })

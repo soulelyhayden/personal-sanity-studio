@@ -1,7 +1,7 @@
 import { defineType, defineField, useCurrentUser, SlugRule } from "sanity";
 import { SlugInput } from 'sanity-plugin-prefixed-slug'
 
-import { GiPaintBrush } from 'react-icons/gi';
+import { AiFillFileImage } from 'react-icons/ai';
 
 import { customClient } from '@lib/customClient'
 import { isUniqueAcrossAllDocuments } from "@lib/isUnique";
@@ -10,7 +10,7 @@ export const project = defineType({
 	title: "Projects",
 	name: "project",
 	type: 'document',
-	icon: GiPaintBrush,
+	icon: AiFillFileImage,
 	groups: [
 		{
 			name: 'projectSettings',
@@ -87,7 +87,7 @@ export const project = defineType({
 		prepare(value: any) {
 			return {
 				title: value.title,
-				media: GiPaintBrush
+				media: AiFillFileImage
 			}
 		}
 	}

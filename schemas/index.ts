@@ -7,9 +7,11 @@ import { about } from "@settings//about"
 import { siteSettings } from "@settings/siteSettings"
 import { navigation } from "@settings/navigation"
 import { theme } from "@settings/theme";
-import { tag } from "@documents/projects/tag";
+import { projectTag } from "@documents/projects/projectTag";
+import { textTag } from "@documents/projects/textTag";
 
-const _documents = [about, siteSettings, navigation, theme, tag]
+
+const _documents = [about, siteSettings, navigation, theme, projectTag, textTag]
 
 /**
  * Utilities import

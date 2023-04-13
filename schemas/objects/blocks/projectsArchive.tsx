@@ -1,5 +1,5 @@
 import { defineType, defineField } from "sanity";
-import { GiPaintBrush } from 'react-icons/gi';
+import { AiFillFileImage } from 'react-icons/ai';
 import { BiCommentDetail } from "react-icons/bi";
 
 export const projectsArchive = defineType({
@@ -7,7 +7,7 @@ export const projectsArchive = defineType({
 	name: 'projectsArchive',
 	type: 'object',
 	description: 'This block uses data from your Projects.',
-	icon: GiPaintBrush,
+	icon: AiFillFileImage,
 	fields: [
 		defineField({
 			name: 'Note',
@@ -45,7 +45,7 @@ export const projectsArchive = defineType({
 			return {
 				title: "Projects Archive",
 				subtitle: "Data pulled from Projects.",
-				media: GiPaintBrush
+				media: AiFillFileImage
 			}
 		}
 	}
