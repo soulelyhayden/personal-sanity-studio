@@ -3,6 +3,7 @@ import { FaBusinessTime } from 'react-icons/fa';
 import { educationExperience } from "./experienceTypes/educationExperience";
 import { lectureExperience } from "./experienceTypes/lectureExperience";
 import { workExperience } from "./experienceTypes/workExperience";
+import { camelCaseToWords } from "@lib/camelCaseToWords";
 
 
 const experienceTypes = [educationExperience, lectureExperience, workExperience]
@@ -64,7 +65,7 @@ export const experience = defineType({
 			}]
 		}),
 		defineField({
-			title: 'institution',
+			title: 'Institution',
 			name: 'institution',
 			type: 'reference',
 			group: 'experienceSettings',
@@ -93,15 +94,29 @@ export const experience = defineType({
 		workExperience
 		
 	],
+	orderings: [
+		{
+			title: 'Experience Type',
+			name: 'experienceTypeAsc',
+			by: [
+				{ field: 'experienceType', direction: 'asc' }
+			]
+		},
+	],
 	preview: {
 		select: {
 			title: 'title',
+			experienceType: 'experienceType'
 		},
-		prepare(value: any) {
+		prepare(value: any, viewOptions = {}) {
 			return {
 				title: value.title,
+				subtitle: value.experienceType ? camelCaseToWords(value.experienceType) : 'Experience needs a type!',
+				// subtitle: viewOptions.ordering && viewOptions.ordering.name === "experienceTypeAsc"
+				// 	? value.experienceType : 'Filler',
 				media: FaBusinessTime
 			}
 		}
 	}
+
 });
