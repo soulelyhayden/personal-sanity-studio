@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 /plugins
+/yarn.lock
 
 # Compiled Sanity Studio
 /dist
