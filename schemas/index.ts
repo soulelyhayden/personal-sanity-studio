@@ -3,18 +3,19 @@ import { defineType, defineField } from "sanity";
 /**
  * Documents import
  */
-import { about } from "@settings//about"
+import { about } from "@documents/about/about"
 import { siteSettings } from "@settings/siteSettings"
 import { navigation } from "@settings/navigation"
 import { theme } from "@settings/theme";
 import { projectTag } from "@documents/projects/projectTag";
 import { textTag } from "@documents/texts/textTag";
-import { experience } from "@documents/experience/experience";
-import { experienceTag } from "@documents/experience/experienceTag";
-import { employer } from "@documents/experience/employer";
+import { experience } from "@documents/about/experience/experience";
+import { experienceTag } from "@documents/about/experienceTag";
+import { institution } from "@documents/about/experience/institution";
+import { skill } from "@documents/about/skills/skill";
 
 
-const _documents = [about, siteSettings, navigation, theme, projectTag, textTag, experience, experienceTag, employer]
+const _documents = [about, siteSettings, navigation, theme, projectTag, textTag, experience, experienceTag, institution, skill]
 
 /**
  * Utilities import

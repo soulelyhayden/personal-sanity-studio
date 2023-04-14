@@ -1,5 +1,15 @@
 import { defineType, defineField, StringRule } from "sanity";
 import { FaBusinessTime } from 'react-icons/fa';
+import { educationExperience } from "./experienceTypes/educationExperience";
+import { lectureExperience } from "./experienceTypes/lectureExperience";
+import { workExperience } from "./experienceTypes/workExperience";
+
+
+const experienceTypes = [educationExperience, lectureExperience, workExperience]
+for (const template of experienceTypes) {
+	template.hidden = ({ parent, value }) => parent?.experienceType != template.name;
+	template.group = 'experienceContent';
+}
 
 export const experience = defineType({
 	title: "Experiences",
@@ -47,18 +57,41 @@ export const experience = defineType({
 			title: 'Tags',
 			name: 'tags',
 			type: 'array',
+			group: 'experienceSettings',
 			of: [{
 				type: 'reference',
 				to: [{ type: 'experienceTag' }]
 			}]
 		}),
 		defineField({
-			title: 'Employer',
-			name: 'employer',
+			title: 'institution',
+			name: 'institution',
 			type: 'reference',
-			to: [{ type: 'employer' }],
+			group: 'experienceSettings',
+			to: [{ type: 'institution' }],
 			// weak: true
 		}),
+		defineField({
+			title: 'Experience Type',
+			name: 'experienceType',
+			type: 'string',
+			group: 'experienceContent',
+			options: {
+				// layout: 'radio',
+				list: [
+					{ title: 'Education Experience', value: 'educationExperience' },
+					{ title: 'Lecture Experience', value: 'lectureExperience' },
+					{ title: 'Work Experience', value: 'workExperience' },
+
+
+				]
+			},
+			validation: (Rule:StringRule) => Rule.required()
+		}),
+		educationExperience,
+		lectureExperience,
+		workExperience
+		
 	],
 	preview: {
 		select: {

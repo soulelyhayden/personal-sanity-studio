@@ -36,21 +36,25 @@ export const structure = (S:StructureBuilder) =>
 				S.listItem().title('Site Theme').icon(RiPaintBrushFill).child(
 					S.document().title('Site Theme').schemaType('theme').documentId('theme')
 				),
-				/* ABOUT */
-				S.listItem().title('About').icon(BsFillPersonLinesFill).child(
-					S.document().schemaType('about').documentId('about')
-				),
 		])
 	),
 	S.divider(),
 
 	/** EXPERIENCE */
-	S.listItem().title('Experiences').icon(FaBusinessTime).child(
+		S.listItem().title('About').icon(BsFillPersonLinesFill).child(
+		/* ABOUT */
+		
 		S.list().title('Experiences').items([
+			S.listItem().title('About').icon(BsFillPersonLinesFill).child(
+				S.document().schemaType('about').documentId('about'),
+			),
+			S.divider(),
 			S.documentTypeListItem('experienceTag'),
 			S.divider(),
-			S.documentTypeListItem('employer'),
 			S.documentTypeListItem('experience'),
+			S.documentTypeListItem('institution'),
+			S.documentTypeListItem('skill'),
+
 		])
 	),
 	S.divider(),
