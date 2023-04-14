@@ -5,18 +5,12 @@ import { structure, schemaOptions, documentOptions } from './structure'
 import { colorInput } from "@sanity/color-input";
 import { visionTool } from '@sanity/vision'
 import { noteField } from 'sanity-plugin-note-field'
-
-// Define the actions that should be available for singleton documents
-const singletonActions = new Set(["publish", "discardChanges", "restore"])
-
-// Define the singleton document types
-const singletonTypes = new Set(["siteSettings", "navigation", "theme", "about"])
-
+import { media } from 'sanity-plugin-media'
 
 const defaultDesk = deskTool({
 	structure,
 })
-const deskPlugins = [defaultDesk, colorInput(), visionTool(), noteField()]
+const deskPlugins = [defaultDesk, colorInput(), visionTool(), noteField(), media()]
 
 export default defineConfig([
 	{
