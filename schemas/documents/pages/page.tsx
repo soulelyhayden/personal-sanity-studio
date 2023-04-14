@@ -1,8 +1,8 @@
 import { defineType, defineField, useCurrentUser, SlugRule,} from "sanity";
 import { SlugInput } from 'sanity-plugin-prefixed-slug'
 
-import { defaultPage } from "@documents/site-pages/templates/defaultPage";
-import { homePage } from "@documents/site-pages/templates/homePage";
+import { defaultPage } from "@documents/pages/templates/defaultPage";
+import { homePage } from "@documents/pages/templates/homePage";
 import { RiPagesFill } from 'react-icons/ri';
 import { MdOutlineManageSearch } from 'react-icons/md'
 

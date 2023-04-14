@@ -7,7 +7,6 @@
 		"@documents/*": ["schemas/documents/*"],
 		"@objects/*": ["schemas/objects/*"],
 		"@settings/*": ["schemas/documents/settings/*"],
-		"@components/*": ["schemas/components/*"]
 	},
     "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],

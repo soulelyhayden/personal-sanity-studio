@@ -1,6 +1,6 @@
 import { defineType, defineField } from "sanity";
 import { MdContactMail } from "react-icons/md";
-import { emailValidation } from "../../components/validation/emailValidation";
+import { emailValidation } from "../../../lib/emailValidation";
 
 export const contactForm = defineType({
 	title: 'Contact Form',

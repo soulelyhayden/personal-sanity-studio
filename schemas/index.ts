@@ -8,7 +8,7 @@ import { siteSettings } from "@settings/siteSettings"
 import { navigation } from "@settings/navigation"
 import { theme } from "@settings/theme";
 import { projectTag } from "@documents/projects/projectTag";
-import { textTag } from "@documents/projects/textTag";
+import { textTag } from "@documents/texts/textTag";
 
 
 const _documents = [about, siteSettings, navigation, theme, projectTag, textTag]
@@ -24,9 +24,9 @@ import { externalLink } from "@utilities/navigation/externalLink"
 
 const _utilities = [internalLink, socialSite, dateRange, externalLink]
 
-import { page } from "@documents/site-pages/page"
+import { page } from "@documents/pages/page"
 import { project } from "@documents/projects/project";
-import { textDocument } from "@documents/projects/textDocument";
+import { textDocument } from "@documents/texts/textDocument";
 
 
 const _content = [page, project, textDocument]
@@ -34,12 +34,12 @@ const _content = [page, project, textDocument]
 /**
  * Blocks import
  */
-import { aboutSection } from "@objects/blocks/aboutSection";
-import { contactForm } from "@objects/blocks/contactForm";
-import { textSection } from "@objects/blocks/textSection";
-import { projectsArchive } from "@objects/blocks/projectsArchive"
-import { textsArchive } from "@objects/blocks/textsArchive";
-import { interactiveSection } from "@objects/blocks/interactiveSection";
+import { aboutSection } from "@objects/pages/aboutSection";
+import { contactForm } from "@objects/pages/contactForm";
+import { textSection } from "@objects/pages/textSection";
+import { projectsArchive } from "@objects/pages/projectsArchive"
+import { textsArchive } from "@objects/pages/textsArchive";
+import { interactiveSection } from "@objects/pages/interactiveSection";
 
 const _blocks = [aboutSection, contactForm, textSection, projectsArchive, textsArchive, interactiveSection]
 
@@ -63,9 +63,9 @@ const blockTypes = defineType({
  * Project items import
  */
 // import { aboutSection } from "@objects/aboutSection";
-import { imageObject } from "@objects/project-items/imageObject";
-import { textObject } from "@objects/project-items/textObject";
-import { embedObject } from "@objects/project-items/embedObject";
+import { imageObject } from "@objects/projects/imageObject";
+import { textObject } from "@objects/projects/textObject";
+import { embedObject } from "@objects/projects/embedObject";
 
 const _projectItems: Array<any> = [imageObject, textObject, embedObject]
 

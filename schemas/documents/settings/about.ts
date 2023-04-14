@@ -1,5 +1,5 @@
 import { defineType, defineField } from "sanity";
-import { emailValidation } from "../../components/validation/emailValidation";
+import { emailValidation } from "../../../lib/emailValidation";
 
 export const about = defineType({
 	title: 'About',
