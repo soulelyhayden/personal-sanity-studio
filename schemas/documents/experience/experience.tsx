@@ -1,11 +1,11 @@
 import { defineType, defineField, StringRule } from "sanity";
-import { GiOrbital } from 'react-icons/gi';
+import { FaBusinessTime } from 'react-icons/fa';
 
 export const experience = defineType({
 	title: "Experiences",
 	name: "experience",
 	type: 'document',
-	icon: GiOrbital,
+	icon: FaBusinessTime,
 	groups: [
 		{
 			name: 'experienceSettings',
@@ -59,13 +59,6 @@ export const experience = defineType({
 			to: [{ type: 'employer' }],
 			// weak: true
 		}),
-		// defineField({
-		// 	title: 'Content',
-		// 	name: 'content',
-		// 	type: 'experienceTypes',
-		// 	group: 'experienceContent',
-		// 	description: 'The main content of the experience.',
-		// })
 	],
 	preview: {
 		select: {
@@ -74,7 +67,7 @@ export const experience = defineType({
 		prepare(value: any) {
 			return {
 				title: value.title,
-				media: GiOrbital
+				media: FaBusinessTime
 			}
 		}
 	}

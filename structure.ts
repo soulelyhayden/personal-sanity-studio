@@ -5,14 +5,22 @@ import { CgWebsite } from "react-icons/cg";
 import { IoNavigateCircle } from "react-icons/io5";
 import { BsFileText, BsFillPersonLinesFill } from "react-icons/bs";
 import { RiPaintBrushFill } from "react-icons/ri";
-import { FaTags } from "react-icons/fa";
+import { FaBusinessTime, FaTags } from "react-icons/fa";
 import { StructureBuilder, StructureResolverContext } from "sanity/desk";
 import { AiFillFileImage } from "react-icons/ai";
-import { GiOrbital } from "react-icons/gi";
+import { schemaTypes } from "schemas";
+import { DocumentActionComponent, DocumentActionsContext, Template } from "sanity";
+
+// Define the actions that should be available for singleton documents
+const singletonActions = new Set(["publish", "discardChanges", "restore"])
+
+// Define the singleton document types
+const singletonTypes = new Set(["siteSettings", "navigation", "theme", "about"])
 
 
-export const structure = async(S:StructureBuilder, context:StructureResolverContext) => 
-S.list().title('Content').items([
+
+export const structure = (S:StructureBuilder) => 
+	S.list().title('Content').items([
 	/* SETTINGS */
 	S.listItem().title('Settings').icon(MdSettings).child(		
 		S.list().title('Settings Documents').items([
@@ -37,7 +45,7 @@ S.list().title('Content').items([
 	S.divider(),
 
 	/** EXPERIENCE */
-	S.listItem().title('Experiences').icon(GiOrbital).child(
+	S.listItem().title('Experiences').icon(FaBusinessTime).child(
 		S.list().title('Experiences').items([
 			S.documentTypeListItem('experienceTag'),
 			S.divider(),
@@ -67,21 +75,36 @@ S.list().title('Content').items([
 		])
 	),
 ])
-interface docSchemaOptions {
-	schemaType: any;
+
+export const schemaOptions = {
+	types: schemaTypes,
+	// Filter out singleton types from the global “New document” menu options
+	templates: (templates: Template<any, any>[]) => templates.filter(({ schemaType }: {schemaType:string}) => !singletonTypes.has(schemaType)),
+}
+export const documentOptions = {
+	// For singleton types, filter out actions that are not explicitly included
+	// in the `singletonActions` list defined above
+	actions: (input: DocumentActionComponent[], context: DocumentActionsContext) =>
+		singletonTypes.has(context.schemaType)
+			? input.filter(({ action }) => action && singletonActions.has(action))
+			: input,
 }
 
-export const defaultDocumentNode = (S: any, { schemaType }: docSchemaOptions) => {
-	// Conditionally return a different configuration based on the schema type
-	// if (schemaType === "post") {
-	// 	return S.document().views([
-	// 		S.view.form(),
-	// 		// S.view.component(WebPreview).title('Web')
-	// 	])
-	// }
+// interface docSchemaOptions {
+// 	schemaType: any;
+// }
 
-	return S.document().views([
-		S.view.form(),
-		// S.view.component(JsonView).title('JSON')
-	])
-}
+// export const defaultDocumentNode = (S: any, { schemaType }: docSchemaOptions) => {
+// 	// Conditionally return a different configuration based on the schema type
+// 	// if (schemaType === "post") {
+// 	// 	return S.document().views([
+// 	// 		S.view.form(),
+// 	// 		// S.view.component(WebPreview).title('Web')
+// 	// 	])
+// 	// }
+
+// 	return S.document().views([
+// 		S.view.form(),
+// 		// S.view.component(JsonView).title('JSON')
+// 	])
+// }

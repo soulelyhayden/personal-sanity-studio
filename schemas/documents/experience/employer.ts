@@ -1,11 +1,11 @@
-import { FaPlaceOfWorship } from "react-icons/fa";
+import { TiBusinessCard } from "react-icons/ti";
 import { StringRule, defineField, defineType } from "sanity";
 
 export const employer = defineType({
-	title: "Employer",
+	title: "Employers",
 	name: "employer",
 	type: 'document',
-	icon: FaPlaceOfWorship,
+	icon: TiBusinessCard,
 	fields: [
 		defineField({
 			title: 'Title',
