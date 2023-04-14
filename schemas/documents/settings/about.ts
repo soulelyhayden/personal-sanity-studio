@@ -41,15 +41,16 @@ export const about = defineType({
 			type: 'array',
 			of: [{ type: 'socialSite' }]
 		}),
-		// defineField({
-		// 	title: 'Work Experience',
-		// 	name: 'workExperience',
-		// 	type: 'array',
-		// 	of: [{
-		// 		type: 'reference',
-		// 		to: [{ type: 'workExperience' }]
-		// 	}]
-		// })
+		defineField({
+			title: 'Work Experience',
+			name: 'experience',
+			type: 'array',
+			of: [{
+				type: 'reference',
+				to: [{ type: 'experience' }],
+				// weak: true
+			}]
+		})
 	],
 	preview: {
 		select: {

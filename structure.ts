@@ -8,6 +8,7 @@ import { RiPaintBrushFill } from "react-icons/ri";
 import { FaTags } from "react-icons/fa";
 import { StructureBuilder, StructureResolverContext } from "sanity/desk";
 import { AiFillFileImage } from "react-icons/ai";
+import { GiOrbital } from "react-icons/gi";
 
 
 export const structure = async(S:StructureBuilder, context:StructureResolverContext) => 
@@ -31,6 +32,17 @@ S.list().title('Content').items([
 				S.listItem().title('About').icon(BsFillPersonLinesFill).child(
 					S.document().schemaType('about').documentId('about')
 				),
+		])
+	),
+	S.divider(),
+
+	/** EXPERIENCE */
+	S.listItem().title('Experiences').icon(GiOrbital).child(
+		S.list().title('Experiences').items([
+			S.documentTypeListItem('experienceTag'),
+			S.divider(),
+			S.documentTypeListItem('employer'),
+			S.documentTypeListItem('experience'),
 		])
 	),
 	S.divider(),

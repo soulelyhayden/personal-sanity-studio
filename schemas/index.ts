@@ -9,9 +9,12 @@ import { navigation } from "@settings/navigation"
 import { theme } from "@settings/theme";
 import { projectTag } from "@documents/projects/projectTag";
 import { textTag } from "@documents/texts/textTag";
+import { experience } from "@documents/experience/experience";
+import { experienceTag } from "@documents/experience/experienceTag";
+import { employer } from "@documents/experience/employer";
 
 
-const _documents = [about, siteSettings, navigation, theme, projectTag, textTag]
+const _documents = [about, siteSettings, navigation, theme, projectTag, textTag, experience, experienceTag, employer]
 
 /**
  * Utilities import
