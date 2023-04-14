@@ -18,12 +18,11 @@ const _documents = [about, siteSettings, navigation, theme, projectTag, textTag]
  */
 import { internalLink } from "@utilities/navigation/internalLink"
 import { socialSite } from "@utilities/items/socialSite";
-import { sponsor } from "@utilities/items/sponsor";
 import { dateRange } from "@utilities/items/dateRange";
 import { externalLink } from "@utilities/navigation/externalLink"
 
 
-const _utilities = [internalLink, socialSite, dateRange, sponsor, externalLink]
+const _utilities = [internalLink, socialSite, dateRange, externalLink]
 
 import { page } from "@documents/site-pages/page"
 import { project } from "@documents/projects/project";
@@ -40,10 +39,9 @@ import { contactForm } from "@objects/blocks/contactForm";
 import { textSection } from "@objects/blocks/textSection";
 import { projectsArchive } from "@objects/blocks/projectsArchive"
 import { textsArchive } from "@objects/blocks/textsArchive";
-import { sponsorsBlock } from "@objects/blocks/sponsors";
 import { interactiveSection } from "@objects/blocks/interactiveSection";
 
-const _blocks = [aboutSection, contactForm, textSection, projectsArchive, textsArchive, sponsorsBlock, interactiveSection]
+const _blocks = [aboutSection, contactForm, textSection, projectsArchive, textsArchive, interactiveSection]
 
 const blockTypeList = (function () {
 	let list: Array<{ type: string }> = [];
