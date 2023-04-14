@@ -16,7 +16,7 @@ export default defineConfig([
 	{
 		name: 'default',
 		title: 'Prod',
-		projectId: 'ijjxi0wa',
+		projectId: 'hautfgiz',
 		dataset: 'production',
 		// the base path is required whenever more than one workspace is defined and is used for route matching
 		basePath: '/production',
@@ -25,15 +25,15 @@ export default defineConfig([
 			types: schemaTypes
 		}
 	},
-	// {
-	// 	name: 'staging',
-	// 	title: 'Staging',
-	// 	projectId: 'ijjxi0wa',
-	// 	dataset: 'development',
-	// 	basePath: '/development',
-	// 	plugins: deskPlugins,
-	// 	schema: {
-	// 		types: schemaTypes
-	// 	}
-	// },
+	{
+		name: 'staging',
+		title: 'Staging',
+		projectId: 'hautfgiz',
+		dataset: 'development',
+		basePath: '/development',
+		plugins: deskPlugins,
+		schema: {
+			types: schemaTypes
+		}
+	},
 ])

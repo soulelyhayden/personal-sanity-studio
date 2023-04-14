@@ -1,14 +1,15 @@
 import { defineType, defineField, useCurrentUser, SlugRule,} from "sanity";
 import { SlugInput } from 'sanity-plugin-prefixed-slug'
 
-import { blocksPage } from "@documents/site-pages/templates/blocksPage";
+import { defaultPage } from "@documents/site-pages/templates/defaultPage";
+import { homePage } from "@documents/site-pages/templates/homePage";
 import { RiPagesFill } from 'react-icons/ri';
 import { MdOutlineManageSearch } from 'react-icons/md'
 
 import { customClient } from '@lib/customClient'
 import { isUniqueAcrossAllDocuments } from "@lib/isUnique";
 
-const pageTamples = [blocksPage]
+const pageTamples = [defaultPage, homePage]
 for (const template of pageTamples) {
 	template.hidden = ({ parent, value }) => parent?.pageType != template.name;
 	template.group = 'pageContent';
@@ -97,11 +98,14 @@ export const page = defineType({
 			options: {
 				// layout: 'radio',
 				list: [
-					{ title: 'Blocks', value: 'blocksPage' },
+					{ title: 'Blocks', value: 'defaultPage' },
+					{ title: 'Home', value: 'homePage' },
+
 				]
 			}
 		}),
-		blocksPage
+		defaultPage,
+		homePage
 	],
 	preview: {
 		select: {

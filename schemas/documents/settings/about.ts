@@ -7,6 +7,11 @@ export const about = defineType({
 	type: 'document',
 	fields: [
 		defineField({
+			title: 'Screen Name // Handle',
+			name: 'handle',
+			type: 'string'
+		}),
+		defineField({
 			title: 'Full Name',
 			name: 'name',
 			type: 'string'
@@ -36,13 +41,15 @@ export const about = defineType({
 			type: 'array',
 			of: [{ type: 'socialSite' }]
 		}),
-		defineField({
-			title: 'Sponsors',
-			name: 'sponsors',
-			// description: 'Sponsors.',
-			type: 'array',
-			of: [{ type: 'sponsor' }]
-		}),
+		// defineField({
+		// 	title: 'Work Experience',
+		// 	name: 'workExperience',
+		// 	type: 'array',
+		// 	of: [{
+		// 		type: 'reference',
+		// 		to: [{ type: 'workExperience' }]
+		// 	}]
+		// })
 	],
 	preview: {
 		select: {
