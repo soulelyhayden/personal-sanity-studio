@@ -78,7 +78,7 @@ export const experience = defineType({
 			type: 'string',
 			group: 'experienceContent',
 			options: {
-				// layout: 'radio',
+				layout: 'radio',
 				list: [
 					{ title: 'Education Experience', value: 'educationExperience' },
 					{ title: 'Lecture Experience', value: 'lectureExperience' },

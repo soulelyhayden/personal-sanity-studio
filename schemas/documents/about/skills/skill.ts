@@ -20,13 +20,13 @@ export const skill = defineType({
 			title: 'Date',
 			name: 'date',
 			type: 'dateRange',
-			description: 'Select the date you began this skill, the duration will be displayed.',
+			description: 'Select the date you began this skill, the duration to the most recent build of the frontend will be displayed.',
 			validation: (Rule) => [
-				Rule.required().warning("skills should have a date!"),
+				Rule.required().warning("Skills should have a date!"),
 			]
 		}),
 		defineField({
-			title: 'skill Description',
+			title: 'Skill Description',
 			name: 'description',
 			type: 'text',
 			description: 'A description of the skill.',

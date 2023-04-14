@@ -45,9 +45,10 @@ export const structure = (S:StructureBuilder) =>
 		/* ABOUT */
 		
 		S.list().title('Experiences').items([
-			S.listItem().title('About').icon(BsFillPersonLinesFill).child(
-				S.document().schemaType('about').documentId('about'),
-			),
+			S.documentListItem().schemaType('about').id('about'),
+			// S.listItem().title('About').icon(BsFillPersonLinesFill).child(
+			// 	S.document().schemaType('about').documentId('about'),
+			// ),
 			S.divider(),
 			S.documentTypeListItem('experienceTag'),
 			S.divider(),

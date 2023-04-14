@@ -1,5 +1,6 @@
 import { defineType, defineField } from "sanity";
 import { emailValidation } from "../../../lib/emailValidation";
+import { BsFillPersonLinesFill } from "react-icons/bs";
 
 export const about = defineType({
 	title: 'About',
@@ -15,6 +16,12 @@ export const about = defineType({
 			title: 'Full Name',
 			name: 'name',
 			type: 'string'
+		}),
+		defineField({
+			title: 'Avatar',
+			name: 'avatar',
+			type: 'image',
+			// validation: Rule => Rule.required()
 		}),
 		defineField({
 			title: 'Description',
@@ -42,13 +49,12 @@ export const about = defineType({
 			of: [{ type: 'socialSite' }]
 		}),
 		defineField({
-			title: 'Work Experience',
-			name: 'experience',
+			title: 'Experiences',
+			name: 'experiences',
 			type: 'array',
 			of: [{
 				type: 'reference',
 				to: [{ type: 'experience' }],
-				// weak: true
 			}]
 		})
 	],
@@ -56,10 +62,13 @@ export const about = defineType({
 		select: {
 			name: 'name',
 			// message: 'successMessage'
+			handle: 'handle',
+			avatar: 'avatar'
 		},
 		prepare(value: any) {
 			return {
-				title: `About${value.name ? `: ${value.name}` : ''}`
+				title: value.handle ? value.handle : value.name ? value.name : 'About',
+				media: value.avatar ? value.avatar : BsFillPersonLinesFill
 			}
 		}
 	}
